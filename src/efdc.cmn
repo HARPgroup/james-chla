@@ -1,0 +1,971 @@
+C**********************************************************************C
+C
+C **  GLOBAL COMMON FILE EFDC.CMN
+C **  FOR USE WITH 10 april 1999 EFDC CODE RELEASE
+C
+C **  LAST MODIFIED BY JOHN HAMRICK ON 11 april 1999
+C
+C**********************************************************************C
+C
+C **  REMOVE COMMENT ON IMPLICIT FOR DOUBLE PRECISION
+C
+C      IMPLICIT REAL(8)  (A-H,O-Z)
+C
+C**********************************************************************C
+C 
+!      INCLUDE 'wqcom.cmn'
+      CHARACTER*20 CCTITLE(100),CLSL(100),CVTITLE(100),CLTMSR(MLTMSRM)
+      CHARACTER*5 SYMBOL(MTM)
+      CHARACTER*12 FNSAL(MLTMSRM),FNTEM(MLTMSRM),FNDYE(MLTMSRM),
+     $             FNSED(MLTMSRM),FNSND(MLTMSRM),FNTOX(MLTMSRM,NTXM),
+     $             FNSFL(MLTMSRM),FNAVV(MLTMSRM),
+     $             FNAVB(MLTMSRM),FNSEL(MLTMSRM),
+     $             FNUVE(MLTMSRM),FNUVT(MLTMSRM),FNU3D(MLTMSRM),
+     $             FNV3D(MLTMSRM),FNQQE(MLTMSRM),FNQ3D(MLTMSRM)
+      CHARACTER*2  CNTMSR(MLTMSRM)
+      CHARACTER*12 FNDSEL,FNDUUU,FNDVVV,FNDWWW,FNDSAL,FNDTEM,FNDDYE,
+     $          FNDSDW,FNDSDB,FNDSNW,FNDSNB,FNDBDH,FNDTXW(NTXM),
+     $          FNDTXB(NTXM),FNDTPW(NTXM),FNDTPB(NTXM)
+C
+C**********************************************************************C
+C
+      COMMON/CHARY/ CCTITLE,CLSL,CVTITLE,SYMBOL,CLTMSR,  
+     $             FNSAL,FNTEM,FNDYE,
+     $             FNSED,FNSND,FNTOX,FNSFL,FNAVV,
+     $             FNAVB,FNSEL,
+     $             FNUVE,FNUVT,FNU3D,
+     $             FNV3D,FNQQE,FNQ3D,
+     $             CNTMSR,
+     $             FNDSEL,FNDUUU,FNDVVV,FNDWWW,FNDSAL,FNDTEM,FNDDYE,
+     $             FNDSDW,FNDSDB,FNDSNW,FNDSNB,FNDBDH,FNDTXW,
+     $             FNDTXB,FNDTPW,FNDTPB
+C
+C**********************************************************************C
+C
+      COMMON/A1/  CU1(LCM,KCM),     CU2(LCM,KCM),
+     2            UUU(LCM,KCM),     VVV(LCM,KCM),  WWW(LCM,0:KCM),
+     5             DU(LCM,KCM),      DV(LCM,KCM),
+     6             FX(LCM,KCM),      FY(LCM,KCM),
+     7           FBBX(LCM,KCM),    FBBY(LCM,KCM),
+     7             CAP(LCM,KCM),    CAM(LCM,KCM), CAS(LCM,KCM),
+     7             CAN(LCM,KCM),    CAE(LCM,KCM), CAW(LCM,KCM),
+     7             RSDZ(LCM,KCM), BH(LCM,KCM),WTCI(KCM,2)
+C    7             UHPF(LCM,KCM), VHPF(LCM,KCM)
+C
+C**********************************************************************C
+C
+      COMMON/A2/    DZC(KCM),   DZIC(KCM),    DZG(KCM),
+     2             DZIG(0:KCM),  DZIGSD4(KCM),  
+     3             CDZD(KSM),   CDZF(KSM),   CDZR(KSM),
+     4             CDZL(KSM),   CDZM(KSM),   CDZU(KSM),
+     5           CDZKMK(KCM),  CDZKK(KCM), CDZKKP(KCM),
+c     2           
+     3            CLB(KCM), CUB(KCM), CMB(KCM), FZU(0:KCM),FZV(0:KCM),
+     4           GAMB(KCM)
+C
+C**********************************************************************C
+C
+      COMMON/A3/      AMCP(LCM),  AMSP(LCM),     BE(LCM),    BI1(LCM),
+     2    BI2(LCM),     CC(LCM),   CCC(LCM),   HTMP(LCM), DIVERTE(LCM),
+     3     CN(LCM),     CE(LCM),    CS(LCM),     CW(LCM),    CCN(LCM),
+     4    CCE(LCM),    CCS(LCM),   CCW(LCM),   DLAT(LCM),   DLON(LCM),
+     5     FP(LCM), FUHDYE(LCM), FVHDXE(LCM), FPGXE(LCM),  FPGYE(LCM),
+     7   HLPF(LCM),     HP(LCM),    HU(LCM),     HV(LCM),    HRU(LCM),
+     8    HRV(LCM),    HMP(LCM),   HMU(LCM),    HMV(LCM),    HMC(LCM),
+     9    H1P(LCM),    H1U(LCM),   H1V(LCM),    H1C(LCM),    H2P(LCM),
+     $      P(LCM),     P1(LCM),   PAM(LCM),    PPH(LCM),  QQVSE(LCM),
+     1   SAAX(LCM),   SCAX(LCM), SNLPX(LCM),   STBX(LCM),    UHE(LCM),
+     2   SAAY(LCM),   SCAY(LCM), SNLPY(LCM),   STBY(LCM),    VHE(LCM),
+     3    SCB(LCM),    SBX(LCM),   SBY(LCM),    SDX(LCM),    SDY(LCM),
+     4    SPB(LCM),    SUB(LCM),   SVB(LCM),    SWB(LCM),  STCUV(LCM),
+     5    TBX(LCM),    TBY(LCM),   TSX(LCM),    TSY(LCM),   RCX(LCM),
+     6   TBX1(LCM),   TBY1(LCM),  TSX1(LCM),   TSY1(LCM),   RCY(LCM),
+     7  UHDYE(LCM), UHDY1E(LCM), VHDXE(LCM), VHDX1E(LCM), UHDY2E(LCM),
+     8 VHDX2E(LCM),     UV(LCM),   U1V(LCM),     VU(LCM),    V1U(LCM),
+     6    AAU(LCM),    BBU(LCM),   AAV(LCM),    BBV(LCM),  STCAP(LCM)
+C
+C**********************************************************************C
+C
+      COMMON/A3A/  FPB(LCM),   FPR(LCM),   PRED(LCM),  PBLK(LCM),
+     2             CNR(LCM),   CER(LCM),    CSR(LCM),   CWR(LCM),
+     3            CCNR(LCM),  CCER(LCM),   CCSR(LCM),  CCWR(LCM),
+     4             CNB(LCM),   CEB(LCM),    CSB(LCM),   CWB(LCM),
+     5            CCNB(LCM),  CCEB(LCM),   CCSB(LCM),  CCWB(LCM),
+     6           LRNBC(LCM), LRSBC(LCM),  LREBC(LCM), LRWBC(LCM),
+     7           LBNRC(LCM), LBSRC(LCM),  LBERC(LCM), LBWRC(LCM),
+     8            LLBC(LCM),  LLRC(LCM), ISRED(LCM), ISCDRY(LCM),
+     9            SUBO(LCM),  SVBO(LCM),  SBXO(LCM),   SBYO(LCM),
+     9           STBXO(LCM), STBYO(LCM),   HWQ(LCM),   H2WQ(LCM),
+     1          UHDYED(LCM),VHDXED(LCM),  HRUO(LCM),   HRVO(LCM),
+     2             HUI(LCM),   HVI(LCM),  H1UI(LCM),   H1VI(LCM),
+     3             HPI(LCM),   ZBR(LCM), HUWET(LCM),  HVWET(LCM),
+     4            SUB1(LCM),  SVB1(LCM), ZBRE(LCM),FCORC(LCM),
+     5             HUDRY(LCM),  HVDRY(LCM),
+     6      VOLBW3(LCM,KBM),VOLBW2(LCM,KBM)
+C
+C**********************************************************************C
+C
+      COMMON/A4/  DXP(LCM),     DXU(LCM),    DXV(LCM),  CUU(LCM),
+     2            DYP(LCM),     DYU(LCM),    DYV(LCM),  CVV(LCM),
+     3           DXYU(LCM),    DXYV(LCM),   DXYP(LCM), DYIU(LCM),
+     4          DXYIP(LCM),    DXIU(LCM),   DYIV(LCM), DXIV(LCM),
+     5          DXYIU(LCM),   DXYIV(LCM), BELV(LCM), NATDRY(LCM),
+     6          QSUME(LCM),  QSUMELPF(LCM), CCCI(LCM), CCI(LCM),
+     7       QSUMEP(LCM),  QSUMELPP(LCM),QSUMEN(LCM),  QSUMELPN(LCM),
+     8          FCAXE(LCM),   FCAYE(LCM),  FCAX1E(LCM),   FCAY1E(LCM),
+     9 FXE(LCM),FYE(LCM),CUE(LCM), CVE(LCM),CUN(LCM), CVN(LCM),
+     $       UELPF(LCM), VELPF(LCM),PTMP(LCM),TEMB(LCM),TEMB1(LCM),
+     1       AMCUE(LCM), AMSUE(LCM), AMCVE(LCM), AMSVE(LCM),
+     2       HPTMP(LCM),HUTMP(LCM),HVTMP(LCM),FPTMP(LCM),FP1(LCM),
+     3       RAINLPF(LCM),EVPSLPF(LCM),EVPGLPF(LCM),RINFLPF(LCM),
+     4       QRAIN(LCM),QEVAP(LCM),QBEDW(LCM),QBEDS(LCM)
+C
+C**********************************************************************C
+C
+      COMMON/A4A/
+     1    HBEDA(LCM),HBEDA1(LCM),
+     2    ZELBEDA(LCM),ZELBEDA1(LCM),QWTRBEDA(LCM),
+     3    QWTRBEDA1(LCM),
+     4    VDRBEDA(LCM),VDRHBEDA1(LCM),PORBEDA(LCM),
+     5    PORBEDA1(LCM),HKBEDA(LCM),HKBEDA1(LCM),
+     6    TAURSA(LCM),TAURBA(LCM),COMBEDA(LCM),
+     6    WRSPSA(LCM),WRSPBA(LCM),SIGPHIA(LCM),
+     7    COMBEDA1(LCM),BDENBEDA(LCM),BDENBEDA1(LCM),
+     8    VFRBEDWA(LCM),VFRBEDWA1(LCM),TCNBEDA(LCM),
+     9    VFRBEDA(LCM,NSTM),VFRBEDA1(LCM,NSTM),
+     $    QSEDBEDA(LCM,NSTM),QSEDBEDA1(LCM,NSTM)
+C
+C**********************************************************************C
+C
+      COMMON/A4B/
+     1    HBED(LCM,KBM),HBED1(LCM,KBM),BEDLINIT(LCM,KBM),
+     2    BEDDINIT(LCM,KBM),BEDBINIT(LCM,KBM),ZELBED(LCM,KBM),
+     3    ZELBED1(LCM,KBM),VDRBED2(LCM,KBM),
+     4    VDRBED(LCM,KBM),VDRBED1(LCM,KBM),PORBED(LCM,KBM),
+     5    PORBED1(LCM,KBM),HKBED(LCM,KBM),HKBED1(LCM,KBM),
+     6    TAURS(LCM,KBM),TAURB(LCM,KBM),COMBED(LCM,KBM),
+     6    WRSPS(LCM,KBM),WRSPB(LCM,KBM),SIGPHI(LCM,KBM),
+     7    COMBED1(LCM,KBM),BDENBED(LCM,KBM),BDENBED1(LCM,KBM),
+     8    VFRBEDW(LCM,KBM),VFRBEDW1(LCM,KBM),TCNBED(LCM,KBM),
+     9    VFRBED(LCM,KBM,NSTM),VFRBED1(LCM,KBM,NSTM),
+     $    QSEDBED(LCM,KBM,NSTM),QSEDBED1(LCM,KBM,NSTM)
+C
+      COMMON/A4D/
+     3    QWTRBED(LCM,0:KBM),QWTRBED1(LCM,0:KBM)
+C
+C**********************************************************************C
+C
+      COMMON/A4C/
+     $    SEDBA(LCM,NSCM),SEDBA1(LCM,NSCM),SEDBAT(LCM),SNDBAT(LCM),
+     2    SNDBA(LCM,NSNM),SNDBA1(LCM,NSNM),
+     7    TOXBA(LCM,NTXM),TOXBA1(LCM,NTXM),TOXFBA(LCM,NTXM),
+     $    SEDB(LCM,KBM,NSCM),SEDB1(LCM,KBM,NSCM),
+     1    SEDBINIT(LCM,KBM,NSCM),
+     2    SNDB(LCM,KBM,NSNM),SNDB1(LCM,KBM,NSNM),
+     3    SNDBINIT(LCM,KBM,NSNM),
+     4    SEDBLPF(LCM,KBM,NSCM),SNDBLPF(LCM,KBM,NSNM),
+     5    SEDBT(LCM,KBM),SNDBT(LCM,KBM),
+     6    SEDBTLPF(LCM,KBM),SNDBTLPF(LCM,KBM),
+     7    TOXB(LCM,KBM,NTXM),TOXB1(LCM,KBM,NTXM),
+     5    TOXBINIT(LCM,KBM,NTXM),
+     6    TOXFB(LCM,KBM,NTXM),TOXBLPF(LCM,KBM,NTXM),
+     $    RTXBSDB(LCM,KBM,NSTM,NTXM)
+C
+C**********************************************************************C
+C
+      COMMON/A5/           AB(LCM,KSM),    AV(LCM,KSM), ABLPF(LCM,KSM),
+     1                 AVUI(LCM,KSM),    AVVI(LCM,KSM), ABEFF(LCM,KSM),
+     2                   WIRT(LCM,KSM),  WTLPF(LCM,KSM)
+C    $  DXX(LCM,6),  DXY(LCM,6),  DYX(LCM,6),  DYY(LCM,6)
+C
+C    3  AMCW(LCM,KSM),  AMSW(LCM,KSM),AMC2AB(LCM,KSM),AMS2AB(LCM,KSM),
+C    $  AMCAB(LCM,KSM),AMSAB(LCM,KSM),
+C
+C**********************************************************************C
+C
+      COMMON/A6/          AH(LCM,KCM),   AHC(LCM,KCM),    AQ(LCM,KCM),
+     2   AHU(LCM,KCM),   AHV(LCM,KCM),AHULPF(LCM,KCM),AHVLPF(LCM,KCM),
+     3     B(LCM,KCM),    B1(LCM,KCM),  CAC(LCM,KCM),
+     4   SAL(LCM,KCM),SAL1(LCM,KCM),SALINIT(LCM,KCM),SALLPF(LCM,KCM),
+     5   TEM(LCM,KCM),TEM1(LCM,KCM),TEMINIT(LCM,KCM),TEMLPF(LCM,KCM),
+     6   DYE(LCM,KCM),DYE1(LCM,KCM),DYEINIT(LCM,KCM),DYELPF(LCM,KCM),
+     7   SFL(LCM,KCM),SFL2(LCM,KCM),SFLINIT(LCM,KCM),SFLLPF(LCM,KCM),
+     8   SED(LCM,KCM,NSCM),SED1(LCM,KCM,NSCM),SEDINIT(LCM,KCM,NSCM),
+     9   SND(LCM,KCM,NSNM),SND1(LCM,KCM,NSNM),SNDINIT(LCM,KCM,NSNM),
+     1   SEDLPF(LCM,KCM,NSCM),SNDLPF(LCM,KCM,NSNM),
+     1  SEDT(LCM,KCM),SEDTLPF(LCM,KCM),SNDT(LCM,KCM),SNDTLPF(LCM,KCM),
+     2  DXU1(LCM,KCM),  DYU1(LCM,KCM),  DXV1(LCM,KCM),  DYV1(LCM,KCM),
+     3  FCAX(LCM,KCM), FCAY(LCM,KCM), FCAX1(LCM,KCM),  FCAY1(LCM,KCM),
+     4 FMDUX(LCM,KCM), FMDUY(LCM,KCM), FMDVX(LCM,KCM), FMDVY(LCM,KCM),
+     5  AMCU(LCM,KCM),  AMCV(LCM,KCM),  AMSU(LCM,KCM),  AMSV(LCM,KCM),
+     6   CWQ(LCM,KCM), CWQ2(LCM,KCM),
+     7   QSUM(LCM,KCM),QSUMP(LCM,KCM),QSUMN(LCM,KCM),
+     8 QSUMLPN(LCM,KCM),QSUMLPP(LCM,KCM),QSUMLPF(LCM,KCM)
+C
+C    3   AXZ(LCM,KCM),   AYZ(LCM,KCM)
+C
+C**********************************************************************C
+C
+      COMMON/A6T/ TOX(LCM,KCM,NTXM),TOX1(LCM,KCM,NTXM),
+     $            TOXINIT(LCM,KCM,NTXM),
+     $            TOXPFW(LCM,KCM,NSTM,NTXM),TOXPFB(LCM,KBM,NSTM,NTXM),
+     1            TOXPFTW(LCM,KCM,NTXM),    TOXPFTB(LCM,KBM,NTXM),
+     1            TOXLPF(LCM,KCM,NTXM),TXPFLPF(LCM,KCM,NSTM,NTXM)
+C
+C**********************************************************************C
+C
+      COMMON/A6A/       FWQQ(LCM,KCM), FWQQL(LCM,KCM),
+     2  FUHU(LCM,KCM),  FUHV(LCM,KCM),  FVHU(LCM,KCM),  FVHV(LCM,KCM),
+     3     U(LCM,KCM),  UHDY(LCM,KCM),    U1(LCM,KCM), UHDY1(LCM,KCM),
+     4     V(LCM,KCM),  VHDX(LCM,KCM),    V1(LCM,KCM), VHDX1(LCM,KCM),
+     5   VPZ(LCM,KCM),  UVPT(LCM,KCM),  VVPT(LCM,KCM),
+     6  ULPF(LCM,KCM),  VLPF(LCM,KCM), UHLPF(LCM,KCM), VHLPF(LCM,KCM),
+     7  UIRT(LCM,KCM),  VIRT(LCM,KCM), UTLPF(LCM,KCM), VTLPF(LCM,KCM),
+     8    U2(LCM,KCM), UHDY2(LCM,KCM),    V2(LCM,KCM), VHDX2(LCM,KCM),
+     9   UWQ(LCM,KCM),   VWQ(LCM,KCM),UHDYWQ(LCM,KCM),VHDXWQ(LCM,KCM),
+     $      BDISP(KCM,KCM,LCM), FUDISP(KCM,LCM), FVDISP(KCM,LCM),
+     $      DXXTCA(LCM), DXYTCA(LCM), DYXTCA(LCM),DYYTCA(LCM),
+     $    CUDISPT(KCM,LCM),CVDISPT(KCM,LCM)
+C    $           UDBDXI(LCM,KCM),VDBDYI(LCM,KCM),
+C
+C**********************************************************************C
+C
+      COMMON/ADVTMP/     UATV(LCM,KCM),     U1ATV(LCM,KCM),
+     1                   VATU(LCM,KCM),     V1ATU(LCM,KCM),
+     1                   UHDYATV(LCM,KCM),  UHDY1ATV(LCM,KCM),
+     1                   VHDXATU(LCM,KCM),  VHDX1ATU(LCM,KCM),
+     1                   FUHDYATV(LCM,KCM), FVHDXATU(LCM,KCM),
+     1                   CRNUU(LCM,KCM),    CRNVU(LCM,KCM),
+     1                   CRNUV(LCM,KCM),    CRNVV(LCM,KCM),
+     1                   CRNWU(LCM,0:KCM),  CRNWV(LCM,0:KCM),
+     1                   CRNUW(LCM,0:KCM),  CRNVW(LCM,0:KCM),
+     1                   CRNWW(LCM,0:KCM),  CDXDYW(LCM,0:KCM)
+C
+C**********************************************************************C
+C
+      COMMON/LADVTMP/  LUU(LCM,KCM), LVU(LCM,KCM), LVSU(LCM,KCM),
+     1                 LVV(LCM,KCM), LUV(LCM,KCM), LUWV(LCM,KCM),
+     1                 KWU(LCM,0:KCM),  KWBU(LCM,0:KCM),
+     1                 KWV(LCM,0:KCM),  KWBV(LCM,0:KCM),
+     1                 LUW(LCM,0:KCM),LUWW(LCM,0:KCM),
+     1                 LVW(LCM,0:KCM),LVSW(LCM,0:KCM),KWW(LCM,0:KCM)
+C
+C**********************************************************************C
+C
+      COMMON/A6B/ TVAR1S(LCM,KCM),TVAR1W(LCM,KCM),
+     $            TVAR1E(LCM,KCM),TVAR1N(LCM,KCM),
+     $            TVAR2S(LCM,KCM),TVAR2W(LCM,KCM),
+     $            TVAR2E(LCM,KCM),TVAR2N(LCM,KCM),
+     $            CFLUUU(LCM,KCM),CFLVVV(LCM,KCM),
+     $            CFLWWW(LCM,0:KCM),TVAR2C(LCM,0:KCM),
+     $            TVAR3S(LCM),TVAR3W(LCM),
+     $            TVAR3E(LCM),TVAR3N(LCM),TVAR3C(LCM)
+C
+C**********************************************************************C
+C
+      COMMON/A7/    W(LCM,0:KCM),   W1(LCM,0:KCM),     W2(LCM,0:KCM),
+     1            FWU(LCM,0:KCM),  FWV(LCM,0:KCM),  WWQ(LCM,0:KCM),
+     2             QQ(LCM,0:KCM),  QQ1(LCM,0:KCM),
+     2            QQL(LCM,0:KCM), QQL1(LCM,0:KCM),    DML(LCM,0:KCM),
+     2            QQ2(LCM,0:KCM), QQL2(LCM,0:KCM),
+     2            BBT(LCM,0:KCM), BBT1(LCM,0:KCM), BBT2(LCM,0:KCM),
+     3           WVPT(LCM,0:KCM), WLPF(LCM,0:KCM),
+     4            VPX(LCM,0:KCM),  VPY(LCM,0:KCM),
+     5          CTURBB1(LCM,KCM),  CTURBB2(LCM,KCM)
+C    5         WDBDZI(LCM,0:KCM)
+C
+C**********************************************************************C
+C
+      COMMON/A8/  Z(0:KCM), ZZ(0:KCM), FPROX(0:KCM)
+C
+C**********************************************************************C
+C
+      COMMON/A9/  IL(LCM),IWGG(NWGGM),JL(LCM),JWGG(NWGGM),LWGG(NWGGM),
+     1            LBC(LCM),  LCT(LCM),ICFLMP(LCM),KBT(LCM),
+     1      ILLT(LCM), JLLT(LCM),   LCTLT(LCM), LNCLT(LCM),LSCLT(LCM),
+     1             LNC(LCM),  LRC(LCM),  LSC(LCM), KPB(LCM), KPS(LCM),
+     1            LNEC(LCM), LNWC(LCM), LSEC(LCM), LSWC(LCM),
+     2          ISPV(LCM,10), JSPV(LCM,10), IVPV(LCM,10), JVPV(LCM,10)
+C
+C**********************************************************************C
+C
+      COMMON/A10/  WC(NTSM), WS(NTSM), WC2(NTSM), WS2(NTSM)
+C
+C**********************************************************************C
+C
+      COMMON/A11/  ZP(0:KPCM),ZZP(KPCM)
+C
+      COMMON/A12/ IJCT(ICM,JCM),IJCTLT(ICM,JCM),
+     $            LIJ(ICM,JCM), LIJLT(ICM,JCM)
+C
+C**********************************************************************C
+C
+      COMMON/A13/ PCBS(NPBSM,MTM), PSBS(NPBSM,MTM),
+     $            PCBW(NPBWM,MTM), PSBW(NPBWM,MTM),
+     $            PCBE(NPBEM,MTM), PSBE(NPBEM,MTM),
+     $            PCBN(NPBNM,MTM), PSBN(NPBNM,MTM),
+     $            PFAM(NPFORM,MTM),PFPH(NPFORM,MTM),
+     $         SPBS1(NPBSM),SPBS2(NPBSM),SPBW1(NPBWM),SPBW2(NPBWM),
+     $         SPBN1(NPBNM),SPBN2(NPBNM),SPBE1(NPBEM),SPBE2(NPBEM)
+C
+C**********************************************************************C
+C
+      COMMON/A14/ IPBS(NPBSM), IPBW(NPBWM), IPBE(NPBEM), IPBN(NPBNM),
+     $          IVBS(NVBSM), IUBW(NUBWM), IUBE(NUBEM), IVBN(NVBNM),
+     $          JPBS(NPBSM), JPBW(NPBWM), JPBE(NPBEM), JPBN(NPBNM),
+     $          JVBS(NVBSM), JUBW(NUBWM), JUBE(NUBEM), JVBN(NVBNM),
+     $          LPBS(NPBSM), LPBW(NPBWM), LPBE(NPBEM), LPBN(NPBNM),
+     $          LVBS(NVBSM), LUBW(NUBWM), LUBE(NUBEM), LVBN(NVBNM),
+     $          ISPBE(NPBEM),ISPBW(NPBWM),ISPBS(NPBSM),ISPBN(NPBNM),
+     $       NPSERS(NPBSM),NPSERW(NPBWM),NPSERE(NPBEM),NPSERN(NPBNM)
+C
+C**********************************************************************C
+C
+      COMMON/A15/
+     $ CBS(NBBSM,2,NSTVM), CLOS(NBBSM,KCM,NSTVM),
+     $ CBW(NBBWM,2,NSTVM), CLOW(NBBWM,KCM,NSTVM),
+     $ CBE(NBBEM,2,NSTVM), CLOE(NBBEM,KCM,NSTVM),
+     $ CBN(NBBNM,2,NSTVM), CLON(NBBNM,KCM,NSTVM)
+C
+C**********************************************************************C
+C
+      COMMON/A16/ NLOS(NBBSM,KCM,NSTVM),   NLOW(NBBWM,KCM,NSTVM),
+     $            NLOE(NBBEM,KCM,NSTVM),   NLON(NBBNM,KCM,NSTVM),
+     1              NCSERS(NBBSM,NSTVM),     NCSERW(NBBWM,NSTVM),
+     2              NCSERE(NBBEM,NSTVM),     NCSERN(NBBNM,NSTVM),
+     2              NCSERA(NLDAM,NSTVM),
+     $                NTSCRS(NBBSM),       NTSCRW(NBBWM),
+     $                NTSCRE(NBBEM),       NTSCRN(NBBNM),
+     $    ICBS(NBBSM),      JCBS(NBBSM),     LCBS(NBBSM),
+     $    ICBW(NBBWM),      JCBW(NBBWM),     LCBW(NBBWM),
+     $    ICBE(NBBEM),      JCBE(NBBEM),     LCBE(NBBEM),
+     $    ICBN(NBBNM),      JCBN(NBBNM),     LCBN(NBBNM),
+     $    ICDA(NLDAM),      JCDA(NLDAM),     LCDA(NLDAM),
+     $    XCDA(NLDAM),YCDA(NLDAM)    
+C
+C**********************************************************************C
+C
+      COMMON/A17/      IQS(NQSIJM),       JQS(NQSIJM),    LQS(NQSIJM),
+     $           QSS(KCM,NQSIJM), CQS(KCM,NQSIJM,NSTVM),NQSMF(NQSIJM),
+     $           NQSERQ(NQSIJM),  NCSERQ(NQSIJM,NSTVM),NQSMUL(NQSIJM),
+     $              RQSMUL(NQSIJM)
+C
+C**********************************************************************C
+C
+      COMMON/A18/   IQCTLU(NQCTLM), JQCTLU(NQCTLM), LQCTLU(NQCTLM),
+     $              IQCTLD(NQCTLM), JQCTLD(NQCTLM), LQCTLD(NQCTLM),
+     $              NQCTYP(NQCTLM), NQCTLQ(NQCTLM), NQCMUL(NQCTLM),
+     $              NQCMFU(NQCTLM), NQCMFD(NQCTLM),
+     $              IQCAX(NQCTLM),JQCAX(NQCTLM),MQCTL(NQCTTM),
+     $              BQCMFU(NQCTLM), BQCMFD(NQCTLM),
+     $              QCTLT(KCM,0:NQCTLM),QCTLTLP(KCM,NQCTLM),
+     $              QCTLST(KCM,NQCTLM),QCTLTO(KCM,0:NQCTLM),
+     $              QCTLSTO(KCM,NQCTLM),RQCMUL(NQCTLM),
+     $             QCTL(NDQCLT,NDQCLT2,KCM,NQCTTM),
+     $             HDIFCTL(NDQCLT,NQCTTM),HDIFCTD(NDQCLT,NQCTTM),
+     $             HCTLUA(NQCTTM), HCTLUM(NQCTTM),
+     $             HCTLDA(NQCTTM), HCTLDM(NQCTTM),
+     $             AQCTL(NQCTTM)
+C
+C**********************************************************************C
+C
+      COMMON/A19/ IQWRU(NQWRM),JQWRU(NQWRM),KQWRU(NQWRM),LQWRU(NQWRM),
+     $            IQWRD(NQWRM),JQWRD(NQWRM),KQWRD(NQWRM),LQWRD(NQWRM),
+     $            NQWRMFU(NQWRM),NQWRMFD(NQWRM),
+     $            NQWRSERQ(NQWRM),MQWRTLST(NQWRSRM),MQWRSR(NQWRSRM),
+     $  TCQWRSR(NQWRSRM),TAQWRSR(NQWRSRM),TQWRSER(NDQWRSR,NQWRSRM),
+     $            QWRSER(NDQWRSR,NQWRSRM),QWRSERT(0:NQWRSRM),
+     $       CQWRSER(NDQWRSR,NQWRSRM,NSTVM),CQWRSERT(0:NQWRSRM,NSTVM),
+     $            QWR(NQWRM),BQWRMFU(NQWRM),BQWRMFD(NQWRM),
+     $            CQWR(NQWRM,NSTVM)
+C
+C**********************************************************************C
+C
+      COMMON/AMDCH/ MDCHTYP(NCHANM),
+     $              IMDCHH(NCHANM),JMDCHH(NCHANM),LMDCHH(NCHANM),
+     $              IMDCHU(NCHANM),JMDCHU(NCHANM),LMDCHU(NCHANM),
+     $              IMDCHV(NCHANM),JMDCHV(NCHANM),LMDCHV(NCHANM),
+     $              QCHANU(NCHANM),QCHANV(NCHANM),QCHNULP(NCHANM),
+     $              QCHANUN(NCHANM),QCHANVN(NCHANM),QCHNVLP(NCHANM),
+     $              ISUDPC(NCHANM),PMDCH(NCHANM)
+C
+C**********************************************************************C
+C
+      COMMON/A20/ RI(NPDM),RJ(NPDM),RK(NPDM)
+C
+C**********************************************************************C
+C
+      COMMON/A21/ CLSHA(MTM),SLSHA(MTM),CTLSHA(MTM),STLSHA(MTM),
+     1        CCLSHA(MTM,MTM),SSLSHA(MTM,MTM),CSLSHA(MTM,MTM),
+     2        SCLSHA(MTM,MTM),CCCC(MTM),SSSS(MTM),TCP(MTM),
+     3        CCCOS(MTM),CCCOS1(MTM),SSSIN(MTM),SSSIN1(MTM),
+     4        ILLSHA(MLM),JLLSHA(MLM),LLSHA(MLM),LSHAP(MLM),
+     5        LSHAB(MLM),LSHAU(MLM),LSHAUE(MLM),
+     6        PLSHA(MLM),PTLSHA(MLM),UELSHA(MLM),UETLSHA(MLM),
+     7        VELSHA(MLM),VETLSHA(MLM),
+     7        BLSHA(KCM,MLM),BTLSHA(KCM,MLM),
+     8        ULSHA(KCM,MLM),UTLSHA(KCM,MLM),
+     9        VLSHA(KCM,MLM),VTLSHA(KCM,MLM),
+     $        PCLSHA(MLM,MTM),PSLSHA(MLM,MTM)
+C
+C**********************************************************************C
+C
+      COMMON/A22/ UECLSHA(MLM,MTM),UESLSHA(MLM,MTM),
+     $        VECLSHA(MLM,MTM),VESLSHA(MLM,MTM),
+     1        BCLSHA(KCM,MLM,MTM),BSLSHA(KCM,MLM,MTM),
+     2        UCLSHA(KCM,MLM,MTM),USLSHA(KCM,MLM,MTM),
+     3        VCLSHA(KCM,MLM,MTM),VSLSHA(KCM,MLM,MTM),
+     4        AMPU(MTM),AMPV(MTM),PHASEU(MTM),PHASEV(MTM),PHASEE(MTM),
+     5        GLSHA(MGM,MGM),VVLSHA(MGM,MGM),
+     6        RHS(MGM),RSOL(MGM),WLSHA(MGM),
+     7        P0(MLM),P1DT1(MLM),B0(KCM,MLM),B1DT1(KCM,MLM),
+     8        UE0(MLM),UE1DT1(MLM),VE0(MLM),VE1DT1(MLM),
+     9        U0(KCM,MLM),U1DT1(KCM,MLM),V0(KCM,MLM),V1DT1(KCM,MLM)
+C
+C**********************************************************************C
+C
+      COMMON/A23/ tarray(2), ISTRAN(0:8), ISPLIT(0:8),ISCDCA(0:8),
+     1           ISADAC(0:8), ISADAV(0:8), ISADAH(0:8), ISFCT(0:8),
+     2           ISCI(0:8),ISCO(0:8),ISTOPT(0:8),ISCDA(0:8)
+C
+C**********************************************************************C
+C
+      COMMON/A24/         MPSER(NPSERM),  MPTLAST(NPSERM),
+     $                   TCPSER(NPSERM),   TAPSER(NPSERM),
+     $                TPSER(NDPSER,NPSERM), PSER(NDPSER,NPSERM),
+     $                                    PSERT(0:NPSERM)
+C
+C    $                TPSER(100,NPSERM), PSER(100,NPSERM),
+C
+C**********************************************************************C
+C
+      COMMON/A25/      MQSER(NQSERM),      MQTLAST(NQSERM),
+     2                TCQSER(NQSERM),       TAQSER(NQSERM),
+     3             TQSER(NDQSER,NQSERM), QSER(NDQSER,KCM,NQSERM),
+     4             QSERT(KCM,0:NQSERM), QSRTLPP(KCM,NQSERM),
+     5                                  QSRTLPN(KCM,NQSERM)
+C
+C    3             TQSER(500,NQSERM), QSER(500,KCM,NQSERM),
+C
+C**********************************************************************C
+C
+      COMMON/A26/  MCSER(NCSERM,NSTVM),      MCTLAST(NCSERM,NSTVM),
+     3            TCCSER(NCSERM,NSTVM),       TACSER(NCSERM,NSTVM),
+     4      TCSER(NDCSER,NCSERM,NSTVM), CSER(NDCSER,KCM,NCSERM,NSTVM),
+     5                    NCSER(NSTVM),  CSERT(KCM,0:NCSERM,NSTVM),
+     6       CSERTT(NCSERM)
+C
+C**********************************************************************C
+C
+      COMMON/ATM/
+     1   PATMT(LCM),TATMT(LCM),RAINT(LCM),EVAPT(LCM),
+     1   SOLSWRT(LCM),SVPA(LCM),VPA(LCM),RHA(LCM),
+     1   WINDST(LCM),WNDVELE(LCM),WNDVELN(LCM),CLOUDT(LCM),
+     1   IRELH(NASERM),ISWDINT(NWSERM),
+     1   MASER(NASERM),MATLAST(NASERM),MWSER(NWSERM),MWTLAST(NWSERM),
+     1   TCASER(NASERM),TAASER(NASERM),TCWSER(NWSERM),TAWSER(NWSERM),
+     1   WINDS(NDWSER,NWSERM),WINDD(NDWSER,NWSERM),
+     1   TASER(NDASER,NASERM),TWSER(NDWSER,NWSERM),
+     1   PATM(NDASER,NASERM),TDRY(NDASER,NASERM),
+     1   CLOUD(NDASER,NASERM),TWET(NDASER,NASERM),
+     1   RAIN(NDASER,NASERM),EVAP(NDASER,NASERM),
+     1   SOLSWR(NDASER,NASERM),NDWHT(LCM,NWSERM),
+     1   ATMWHT(LCM,NASERM),WNDWHT(LCM,NWSERM),CLEVAP(LCM),CCNHTT(LCM)
+C
+C    2   TASER(1500), WINDS(1500), WINDD(1500),PATM(1500),TDRY(1500),
+C    3   TWET(1500), RAIN(1500),EVAP(1500),SOLSWR(1500)
+C
+C**********************************************************************C
+C
+      COMMON/BAL/    NBAL,ISBAL,VOLBEG,VOLOUT,SALBEG,SALOUT,DYEBEG,
+     $               DYEOUT,PPEBEG,PPEOUT,UUEBEG,UUEOUT,VVEBEG,AMOBEG,
+     $               VVEOUT,BBEBEG,BBEOUT,UMOBEG,UMOOUT,VMOBEG,VMOOUT,
+     $         NBALO, VOLBEGO,VOLOUTO,SALBEGO,SALOUTO,DYEBEGO,
+     $         DYEOUTO,PPEBEGO,PPEOUTO,UUEBEGO,UUEOUTO,VVEBEGO,AMOBEGO,
+     $         VVEOUTO,BBEBEGO,BBEOUTO,UMOBEGO,UMOOUTO,VMOBEGO,VMOOUTO,
+     $         NBALE,VOLBEGE,VOLOUTE,SALBEGE,SALOUTE,DYEBEGE,
+     $         DYEOUTE,PPEBEGE,PPEOUTE,UUEBEGE,UUEOUTE,VVEBEGE,AMOBEGE,
+     $         VVEOUTE,BBEBEGE,BBEOUTE,UMOBEGE,UMOOUTE,VMOBEGE,VMOOUTE,
+     $       NBUD,ISSBAL,SEDBEG,SEDIN,SEDOUT,SEDBMO,SEDEND,SEDERR,
+     $       RSDERDE,RSDERDO,VOLMBEG,VOLMOUT,VOLMIN,VOLMEND,
+     $       SMASSBEG,SMASSOUT,SMASSIN,SMASSEND,
+     $       BSEDBEG,SSEDBEG,BSEDEND,SSEDEND,TOXOUTBC,TOXINBC,TOXBEDTOP   
+C
+C**********************************************************************C
+C
+      COMMON/CLRPD/ NLRPD,ISLRPD,JSLRPD,MLRPDRT,MLRAVG,
+     $      ILRPD1,ILRPD2,JLRPD1,JLRPD2,NLRPDL(LCGLM),
+     $      ILRPD(LCGLM),JLRPD(LCGLM),HLRPD(LCGLM,NGLM),
+     $      IACTLR(NGLM),MCNTLR(NGLM),NLRPDRT(NGLM),
+     $      XLRPD(LCGLM,KCM,NGLM),YLRPD(LCGLM,KCM,NGLM),
+     $      ZLRPD(LCGLM,KCM,NGLM),ZILRPD(LCGLM,KCM,NGLM),
+     $      XMLRPD(LCGLM,KCM,NGLM),YMLRPD(LCGLM,KCM,NGLM),
+     $      ZMLRPD(LCGLM,KCM,NGLM),HLRPDF(LCGLM,KCM,NGLM),
+     $      UPLRPD(LCGLM,KCM),VPLRPD(LCGLM,KCM),WPLRPD(LCGLM,KCM),
+     $      UMPLRPD(LCGLM,KCM),VMPLRPD(LCGLM,KCM),WMPLRPD(LCGLM,KCM),
+     $      NUTMP(LCGLM,KCM),NUMTMP(LCGLM,KCM)
+C
+C**********************************************************************C
+C
+      COMMON/TMSR1/ ISTMSR,JSTMSR,MLTMSR,NBTMSR,NSTMSR,NWTMSR,NCTMSR,
+     $              NTSSTSP,
+     $              ILTMSR(MLTMSRM),JLTMSR(MLTMSRM),MTMSRP(MLTMSRM),
+     $              MTMSRC(MLTMSRM),MTMSRA(MLTMSRM),
+     $              MTMSRUE(MLTMSRM),MTMSRUT(MLTMSRM),MTMSRU(MLTMSRM),
+     $              MTMSRQE(MLTMSRM),MTMSRQ(MLTMSRM),
+     $            NTSSSS(MLTMSRM),MTSSTSP(NTSSTSPM),MTSCUR(NTSSTSPM),
+     $            TSSTRT(MTSSTSPM,NTSSTSPM),TSSTOP(MTSSTSPM,NTSSTSPM),
+     $              BELSURF(LCM),
+     $              ASURFEL(LCM),VOLSEL(LCM),VOLZERD,SELZERD,ASFZERD,
+     $              ISLUSED(LCM),LORDER(LCM),LORMAX,VETZERD, TCTMSR
+C
+C**********************************************************************C
+C
+      COMMON/VVEG/ BPVEG(NVEGTPM),RDLPSQ(NVEGTPM),ALPVEG(NVEGTPM),
+     $             BETVEG(NVEGTPM),GAMVEG(NVEGTPM),HPVEG(NVEGTPM),
+     $             PVEGX(NVEGTPM),PVEGY(NVEGTPM),SCVEG(NVEGTPM),
+     $             PVEGZ(NVEGTPM),BDLPSQ(NVEGTPM),MVEGL(LCM),
+     $        FXVEGE(LCM),FYVEGE(LCM),FXVEG(LCM,KCM),FYVEG(LCM,KCM)
+C
+C**********************************************************************C
+C
+      COMMON/VSFP1/ ISVSFP,MDVSFP,MLVSFP,NBVSFP,NSVSFP,JSVSFP,TMVSFP,
+     $              TAVSFP,DMVSFP(MDVSM),TIMVSFP(MTVSM),NTVSFP(MTVSM),
+     $              IVSFP(MTVSM),JVSFP(MTVSM)
+C
+C**********************************************************************C
+C
+      COMMON/WASP1/    LCHNC(KCM*LCM,10),NCHNC(0:KCM*LCM),ISNKH,
+     $                 DEPSED,TDINTS,SEDIFF,ISWASPD,ISDHD
+C
+C**********************************************************************C
+C
+      COMMON/OUT3D1/    IS3DO,ISR3DO,NP3DO,KPC,I3DMIN,I3DMAX,NCALL3D,
+     $                  J3DMIN,J3DMAX,SELVMAX,BELVMIN,I3DRW,NRCAL3D,
+     $                  IS3DUUU,JS3DUUU,UUU3DMA,UUU3DMI,
+     $                  IS3DVVV,JS3DVVV,VVV3DMA,VVV3DMI,
+     $                  IS3DWWW,JS3DWWW,WWW3DMA,WWW3DMI,
+     $                  IS3DSAL,JS3DSAL,SAL3DMA,SAL3DMI,
+     $                  IS3DTEM,JS3DTEM,TEM3DMA,TEM3DMI,
+     $                  IS3DDYE,JS3DDYE,DYE3DMA,DYE3DMI,
+     $                  IS3DSED,JS3DSED,SED3DMA,SED3DMI,
+     $                  IS3DSND,JS3DSND,SND3DMA,SND3DMI,
+     $                  IS3DTOX,JS3DTOX,TOX3DMA,TOX3DMI,
+     $ ISS3DSED(NSCM),JSS3DSED(NSCM),SED3DMAX(NSCM),SED3DMIN(NSCM),
+     $ ISS3DSND(NSNM),JSS3DSND(NSNM),SND3DMAX(NSNM),SND3DMIN(NSNM),
+     $ ISS3DTOX(NTXM),JSS3DTOX(NTXM),TOX3DMAX(NTXM),TOX3DMIN(NTXM),
+     $                  APT(KPCM,KCM), AP(KPCM), IAP(KPCM),
+     $                  IAKL(KPCM,LCM), IAIJ(IGM,JGM), TMP3D(KCM)
+C
+C**********************************************************************C
+C
+      COMMON/SUBSX/     CQSE(NSTVM),WKQ(KCM),QQI(LCM),
+     2             RSDR(LCM),RSDB(LCM),SEDF(LCM,0:KCM,NSCM),
+     3             TOXF(LCM,0:KCM,NTXM),SNDF(LCM,0:KCM,NSNM),
+     5             CH(LCM,KCM), CMAX(LCM,KCM), CMIN(LCM,KCM),
+     6             CONT(LCM,KCM),FQC(LCM,KCM),CON2(LCM,KCM),
+     7            QCON2(LCM,0:KCM),
+     8           QCH(LCM,0:KCM), QCMAX(LCM,0:KCM), QCMIN(LCM,0:KCM),
+     9         QCONT(LCM,0:KCM),
+     $         HWQI(LCM),
+     1         UCOS(MTM),USIN(MTM),VCOS(MTM),VSIN(MTM),RMAJ(MTM),
+     2         RMIN(MTM),ACCWX(MTM),
+     4         CGSR(LCM),CGWR(LCM),CGER(LCM),CGNR(LCM),
+     5         CGSB(LCM),CGWB(LCM),CGEB(LCM),CGNB(LCM),
+     6         PCG(LCM),RCG(LCM),APCG(LCM),PBTMP(LCM),FPRT(LCM),
+     7         ATMP(KCM),BTMP(KCM)
+C
+C**********************************************************************C
+C
+      COMMON/GWI/     AGWELV(LCM),AGWELV1(LCM),AGWELV2(LCM),
+     1                BELAGW(LCM),EVAPSW(LCM),EVAPGW(LCM),GWLPF(LCM),
+     2                RIFTR(LCM),RNPOR,RIFTRM,ISGWIE,DAGWZ
+C
+C**********************************************************************C
+C
+      COMMON/WAVEA/ RKHTAB(1001),FUNKH(1001),WACCWE(LCMW),WVWHA(LCMW),
+     1              WVKHP(LCMW),WVKHC(LCMW),WVKHU(LCMW),WVKHV(LCMW),
+     2              UWVMAG(LCMW),VWVMAG(LCMW),WVENEP(LCMW),
+     3              WVHUU(LCMW,KCM),WVHVV(LCMW,KCM),WVPP(LCMW,KCM),
+     4              WVHUV(LCMW,KCM),WVDISP(LCMW,KCM),
+     5              UWVRE(LCMW,KCM),UWVIM(LCMW,KCM),WVFRQL(LCMW),
+     6           VWVRE(LCMW,KCM),VWVIM(LCMW,KCM),QQWC(LCM),QQWCR(LCM),
+     4          WVTMP1(LCMW),WVTMP2(LCMW),WVTMP3(LCMW),WVTMP4(LCMW),
+     7              WVPU(LCMW,KCM), WVPV(LCMW,KCM),UWVSQ(LCMW),
+     8              FXWAVE(LCMW,KCM),FYWAVE(LCMW,KCM),QQWV1(LCMW),
+     9          WVDTKEM(KSM),WVDTKEP(KSM),QQWV2(LCMW),QQWV3(LCMW),
+     9              HMPW(LCMW),HMCW(LCMW),HMUW(LCMW),HMVW(LCMW)
+C
+C**********************************************************************C
+C
+      COMMON/SEDTRAN/  SSG(NSTM),SEDO(NSTM),SEDN(NSTM),SEXP(NSTM),
+     1      SEDBO(NSTM),SDEN(NSTM),SDBLV(NSTM),TAUR(NSTM),TAUN(NSTM),
+     1      TEXP(NSTM),TAUD(NSTM),WSEDO(NSTM),WRSPO(NSTM),SEDDIA(NSTM)
+C
+C**********************************************************************C
+C
+      COMMON/TOXIC/ ITXINT(NTXM),ISTOXR(NTXM),ITXBDUT(NTXM),
+     1   ITXPARW(NSTM,NTXM),ITXPARB(NSTM,NTXM),
+     2   TOXINTW(NTXM),TOXINTB(NTXM),ITOXWU(NTXM),ITOXBU(NTXM),
+     3   RKTOXW(NTXM),TKTOXW(NTXM),RKTOXB(NTXM),TRTOXB(NTXM),
+     4   VOLTOX(NTXM),RMOLTX(NTXM),RKTOXP(NTXM),SKTOXP(NTXM),
+     5   DIFTOX(NTXM),TOXPARW(NSTM,NTXM),CONPARW(NSTM,NTXM),
+     6                TOXPARB(NSTM,NTXM),CONPARB(NSTM,NTXM)
+C
+C**********************************************************************C
+C
+      COMMON/JETPLUM/ICALJP(NQJPM),IOUTJP(NQJPM),IQJP(NQJPM),
+     $           JQJP(NQJPM),KQJP(NQJPM),NJEL(NQJPM),NUDJPC(NQJPM),
+     $           NJPMX(NQJPM),ISENT(NQJPM),ISTJP(NQJPM),ISDJP(NQJPM),
+     $           KEFFJP(NQJPM),NUDJP(NQJPM),NZPRJP(NQJPM),
+     $           NQSERJP(NQJPM),NCSERJP(NQJPM,NSTVM),
+     $           XJETL(NQJPM),YJETL(NQJPM),
+     $           ZJET(NQJPM),PHJET(NQJPM),THJET(NQJPM),DJET(NQJPM),
+     $           CFRD(NQJPM),DJPER(NQJPM),QQCJP(NQJPM),
+     $           CQCJP(KCM,NQJPM,NSTVM)
+C
+C
+      COMMON/ADATA/ ZAD(KCM,1),  TAD(KCM,1), UAGD(KCM,1),
+     $         VAGD(KCM,1), WAGD(KCM,1),SALAD(KCM,1),
+     $        TEMAD(KCM,1),DYEAD(KCM,1),SFLAD(KCM,1),
+     $        TOXAD(KCM,NTXM,1),
+     $        SEDAD(KCM,NSCM,1),SNDAD(KCM,NSNM,1)
+C
+      COMMON/AVAL/ NAZD,NATD,ZVAL,TVAL,UAG, VAG, WAG,SALA,
+     $            TEMA,DYEA,SFLA,TOXA(NTXM),SEDA(NSCM),SNDA(NSNM)
+C
+C**********************************************************************C
+C
+      COMMON/ISEDDAT/ISEDINT,ISEDBINT,ISEDWC,ISMUD,ISNDWC,ISEDBED,KB,
+     $      ISEDAL,ISNDAL,IBMECH,IBMECHD,ISEDVW,ISNDVW,IMORPH,IBEDDDNU,
+c    $      IBEDBDNU,IBEDLAYU  !bug, Ji, 3/5/00
+     $      IBEDBDNU,IBEDLAYU,
+     $      ISEDWU(NSTM),ISEDBU(NSCM),ISNDWU(NSNM),ISNDBU(NSNM),
+     $      SEDPHI(NSTM),
+     $      IWRSP(NSTM),ISNDEQ(NSTM),ISEDSCOR(NSTM)
+C
+C**********************************************************************C
+C
+      COMMON/RSEDDAT/HBEDMAX,BEDPORC,SEDMDMX,SEDMDMN,SNDVDRD,
+     $                      SEDVDRD,SEDVDRM,SEDVRDT,SHSBEDMX,
+     $                      BMECH1,BMECH2,BMECH3,BMECH4,BMECH5,BMECH6,
+     $                      SEDCON1,SEDCON2,SEDCON3,SEDCON4
+C
+C**********************************************************************C
+C
+      COMMON/DUMPCOM/ISDUMP,ISADMP,NSDUMP,ISDMPP,ISDMPU,NCDUMP,JSDUMP,
+     $            ISDMPW,ISDMPT,IADJDMP,TSDUMP,TEDUMP
+
+C**********************************************************************C
+C
+      COMMON/SFISH/ MSFSER,TCSFSER,TASFSER,TSRSF,TSSSF,ISSFLDN,
+     1              ISSFLFE,MSFTLST,RKDSFLT,WSFLSTT,WSFLSMT,DSFLMNT,
+     2              DSFLMXT,SFNTBET,SFATBTT,SFLKILL,
+     1              TSFSER(100),RKDSFL(100),WSFLST(100),SFATBT(100),
+     2              WSFLSM(100),DSFLMN(100),DSFLMX(100),SFNTBE(100),
+     3              ACCWFLD(LCM,2),SFLSBOT(LCM)
+C
+C**********************************************************************C
+C
+      COMMON/NSPGRID/  ISPNS(JCM), JSPNS(JCM), INPNS(JCM), JNPNS(JCM)
+C
+C**********************************************************************C
+C
+      COMMON/IPLT/ NPSPH(7),NCSPH(7),ISSPH(7),JSSPH(7),ISRSPH(7),
+     $             JSRSPH(7),ISPHXY(7),
+     $             NPSPV(7),NCSPV(7),ISSPV(7),JSSPV(7),ISRSPV(7),
+     $            JSRSPV(7),ISHPLTV(7),
+     $            NIJVPV(10),NIJSPV(10)
+C
+       COMMON/RPLT/ SHPLTV(7),SBPLTV(7)
+C
+C**********************************************************************C
+C
+      COMMON/CHAN1DI/ JUNTPX(NJUNXM),JUNTPY(NJUNYM),
+     $                LJUNX(NJUNXM),LJUNY(NJUNYM),NXYSDAT(LCM)
+C
+      COMMON/CHAN1DR/ FADXP(LCM),FADYP(LCM),FADXP1(LCM),FADYP1(LCM),
+     $                FADXP2(LCM),FADYP2(LCM),
+     $                AREAOLD(LCM),AREANEW(LCM),
+     $                AREAWQO(LCM),AREAWQN(LCM),
+     $                FADYU(LCM),FADXV(LCM),FADYU1(LCM),FADXV1(LCM),
+     $                WPDXP(LCM),WPDYP(LCM),WPDXP1(LCM),WPDYP1(LCM),
+     $                WPDXV(LCM),WPDYU(LCM),WPDXV1(LCM),WPDYU1(LCM),
+     $                SRFXP(LCM),SRFYP(LCM),SRFXP1(LCM),SRFYP1(LCM),
+     $                SRFXV(LCM),SRFYU(LCM),SRFXV1(LCM),SRFYU1(LCM),
+     $                DADH(LCM),DADH1(LCM),BELVB(LCM),
+     $                EHXYS(NXYSDATM,LCM),
+     $                AREADY(NXYSDATM,LCM),AREADX(NXYSDATM,LCM),
+     $                WPERDX(NXYSDATM,LCM),WPERDY(NXYSDATM,LCM),
+     $                SURFDX(NXYSDATM,LCM),SURFDY(NXYSDATM,LCM)
+C
+C**********************************************************************C
+C
+
+      COMMON/A/ ABMAX, ABMIN,   ABO,    AC,     AC2,
+     1            ACS,   AHD, AHMAX,   AHO,     AS,  AS2, ACS2,
+     2          AVCON, AVMAX, AVMIN,   AVO,     ABMN, AVMN ,
+     3               AVCON1, ANGVPV(10)
+C
+C**********************************************************************C
+C
+      COMMON/B/  BSC,BELADJ,BELCVRT
+C
+C**********************************************************************C
+C
+      COMMON/C/    CF, CTURB,CTURB2,CTURB3,CTURB2B,CTE1,CTE2,CTE3,
+     1             CFMAX,CDLAT1, CDLAT2, CDLAT3,
+     2                   CDLON1, CDLON2, CDLON3
+C
+C**********************************************************************C
+C
+      COMMON/D/    DT,   DTI,   DT2,
+     1          DMLMIN,DABEDT,
+     2         DX, DY, DZ, DZPC,
+     3         DZI,     DZS
+C
+C**********************************************************************C
+C
+      COMMON/E/   ERR,ERRMAX,ERRMIN,EVAPCVT,FSWRATF
+C
+C**********************************************************************C
+C
+      COMMON/F/   FILT3TL
+C
+C**********************************************************************C
+C
+      COMMON/G/     G,    GI,  GID2,    GP,   GPO
+C
+C**********************************************************************C
+C
+      COMMON/H/  HADJ, HCVRT,  HMIN,  HDRY,HWET, HEQT,HTBED1,HTBED2
+C
+C**********************************************************************C
+C
+      COMMON/I/ IC,IG, ISAHMF, ISRESTI,ISRESTO, IRVEC,ISQQ,ISRLID,
+     1          ITER, ITERM,ITRMAX,ITRMIN,ISHDMF,ISLTMTS,ISDIA,
+     2          ISVPH,ISRVPH,ISDIVEX,ISMASK,ISECVPV,ISECSPV,ISFAVB,
+     3          ISVPV,ISRVPV,ISDIQ,ISCFL,ISCFLM,
+     4          ISPD,ISLSHA,ISLSTR,ISCDMA,ISLTMT,ISSSMMT,ISHTA,ISPGNS,
+     5          ISRESTR,ISLOG,ISNEGH,ISMMC,ITRMADJ,ITERHPM,IDRYCK,
+     6          ISIA,ITRMIA,ISCLO,ISHP,ISVEGL,ISDRYD,ISITB,NDRYSTP,
+     7          ISWASP,ISWASP1,ISDISP,ISDRY,ISPCOR,ISPPH,ISDCCA,
+     8          ISHOW,ICSHOW,JCSHOW,IBSC,IPLRPD,ISVEG,ISRPPH,ISDSOLV,
+     9          ISCRAY,ISWQCMAP,ISWQSMAP,IASWRAD,ISAVBMN,
+     1          ISINWV,IHYDOUT,ISEVER,IRECL,ISHPRT,ISCORV,IS1DCHAN
+C
+C**********************************************************************C
+C
+      COMMON/J/    JC,JG, JSRESTR,JSBAL,JSSBAL, JSBALO, JSBALE, JSWASP,
+     2              JSVPH,JSRVPH,JSWRPH,JSTBXY,
+     3              JSVPV,JSRVPV,
+     4              JSPD,JSLSHA,JSPPH,JSRPPH,JSHYDOUT
+C
+C**********************************************************************C
+C
+      COMMON/K/           KC,    KS
+C
+C**********************************************************************C
+C
+      COMMON/L/      LA,   LC,    LB,       LR,   LVC,   LSLSHA,
+     2               LWASP, LALT, LCLT, LDM
+C
+C**********************************************************************C
+C
+      COMMON/M/       MTIDE,MLLSHA,MDCHH,MDCHHD,MDCHCK,MDCHIL,
+     $            MVEGTYP,MVEGOW,MDCHITM,MDCHHD2,MDCHHQ,
+     $            MSVTOX(NTXM),MSVSED(NSCM),MSVSND(NSNM)
+C
+C**********************************************************************C
+C
+      COMMON/N/     N,  NBAN,  NCBE,  NCBN,  NCBS,  NCBW,NINTFL,
+     1            NBC,    NC, NCTBC,  NLTC,  NLTS, NPSER,NTTS,
+     2           NMMT, NMNLO,    NN,    NP,  NPBE,  NPBN,
+     3           NPBS,  NPBW,  NQIJ, NRC,NSBMAX, NQSER,NQCTL,NQWR,
+     4         NSHMAX,   NSM,   NTC, NTCNB, NTCPP, NTCVB,NQSIJ,
+     5            NTS, NTSBR,  NHAR, NTCMMT,NTSMMT, NTSPP,NPRINT,
+     6          NTSNB,NTSPTC,NTSPTC2,NTSTBC,NTSVB,  NTTC,
+     7           NUBE,  NUBW,  NVBN,  NVBS,NC3DO,NDISP,NSED,NSND,
+     8          NCVPH, NCVPV,NQJPIJ,NLCDA,
+     9           NPD,NCPD,NWPD,NPDRT,NCLSHA,NTCLSHA,NCPPH,NPPPH,
+     $         NPVPH,  NPVPV,NFLTMT,
+     1         NSHOWR,NSHOWC,NSHTYPE,NTIMER,NWGG,NPNSBP,NDM,NTOX,
+     2         NTOXSER,NSEDSER,NSNDSER,NTOXSRF,NTOXSRL,
+     3         NSEDSRF,NSEDSRL,NSNDSRF, NSNDSRL,NQCTLT,
+     4         NCHYDOUT,NWHYDOUT,NASER,NWSER,NQWRSR,NJUNX,NJUNY
+C
+C**********************************************************************C
+C
+      COMMON/P/    PI, PI2,PDGINIT
+C
+C**********************************************************************C
+C
+      COMMON/Q/     QQMIN, QQLMIN,  QXE, QXEVP,   QXW,
+     1          QXWVP,   QYN, QYNVP,   QYS, QYSVP,QCHERR
+C
+C**********************************************************************C
+C
+      COMMON/R/   RP, RSQ,  RSQM, RNEW,  ROLD, RPADJ, RSQMADJ,RMWET,
+     1            RPIA, RSQMIA,RAINCVT,RMLSHA,RTLSHA,RTTLSHA,
+     2            RITB,RITB1,RKDYE,REVC,RCHC
+C
+C**********************************************************************C
+C
+      COMMON/S/  SNLT,SWRATNF,SWRATNS,SOLSRDT,SOLFRDT,SNDDMX
+C
+C**********************************************************************C
+C
+      COMMON/T/      TCVP,  TIDALP,  TN,  TCON,  TBEGIN, TEMO,
+     1                TNT,   TPN, TVDIF, TCGRS, TRELAXV, TCALTRAN,
+c     1               TSADV,THDMT,TCEXP,TAVB,TUVW,TSCDA  ! bug, Ji, 3/5/00
+     1               TSADV,THDMT,TCEXP,TAVB,TUVW,TSCDA,STLAGCDA,SLAGCDA,
+     2               TPUV,TQQQ,TLRPD,TQCTL,TCONG,
+     4          TWQADV, TWQDIF, TWQKIN, TWQSED,TBEDIT
+C
+C**********************************************************************C
+C
+      COMMON/UV/     UVEGSCL,VKC
+C
+C**********************************************************************C
+C
+      COMMON/W/      WSMB,  WSMH,
+     1               WTVDIF, WTCGRS, WTRELAXV,
+     2               WTSADV,WTHDMT,WTCEXP,WTAVB,WTUVW,
+     3               WTPUV,WTQQQ,WTLRPD,WTQCTL,WTCONG,
+     4         WTWQADV,WTWQDIF,WTWQKIN,WTWQSED,WSHELE,WSHELN
+C
+C**********************************************************************C
+C
+      COMMON/Z/ ZBRADJ,ZBRCVRT,ZSSMIN,ZSSMAX,SSALMAX
+C
+C**********************************************************************C
+C
+      COMMON/WASP2/ IVOPT,IBEDV,SCALV,CONVV,VMULT,VEXP,DMULT,DEXP,
+     $    NRFLD,CSALR,CONVR,IQOPT,NFIELD,SCALQ,CONVQ
+C
+C**********************************************************************C
+C
+      COMMON/RCA1/ ISRCA,JSRCA,ICRCA1,ICRCA2,ICRCA3,ICRCA4,ICRCA5,
+     $                         NCRCA1,NCRCA2,NCRCA3,NCRCA4,NCRCA5,
+     $                         RCRCA1,RCRCA2,RCRCA3,RCRCA4,RCRCA5
+C
+C**********************************************************************C
+C
+      COMMON/WAVES/    WVPRD,WVFRQ,ISWAVE,JSWAVE,NWUPDT,NWCUNT,
+     $                 NWVDAT,CVTWHA,ISWCBL,ISWRSR,ISWRSI,ITWCBL1,
+     $                 ITWCBL2,ITWCBL3,ITWCBL4,ITWCBL5,
+     $           NTSWV,WVDISV,WVDISH,WVLSH,WVLSX,ISWVSD,ISDZBR,
+     $           RSWRSR,RSWRSI
+
+C begin, ????????????????????????????????????????????? This portion might not be needed, so we can save some space,
+c        check caefully before proceed, jeff ji, 8/26/02
+
+c
+c Common blocks for diurnal DO
+c JS (2/20/99)
+c
+c      COMMON/DIUDO/DIURA(99), DIURAA(43,LCMWQ), DOHR(0:26),
+c     1  SODhr(0:26,LCMWQ), RKAhr(0:26,LCMWQ),
+c     2  NDIUR, LDIUDO, ISTPDAY,
+c     3  ISTPHR, IHOURDIU, IDIURDO, IDIUDIA, ICDIA, JCDIA
+C
+
+
+C
+C Common block for saving hydrodynamic variables to binary file:
+C
+      COMMON/HYDBIN/SELsum(LCM), DEPsum(LCM), VXXsum(LCM), VYYsum(LCM),
+     1  QXXsum(LCM), QYYsum(LCM),
+     2  timehyd, nhycnt, nrec0
+Cend, ????????????????????????????????????????????? This portion might not be needed, so we can save some space, jeff ji, 8/26/02
+C**********************************************************************C
+C
+CC**********************************************************************
+c jeff ji, 10/16/98, for dump2.for
+C
+      COMMON/DUMP2a/ IDUMP2,JHM,IHIST(9000,2),IAVerage
+     3                                      ,IUDUMP,IUDUM2,
+     5  DUMPp(LCM),DUMPu(LCM,KSM),DUMPv(LCM,KSM),DUMPw(LCM,KSM),
+     6  DUMPs(LCM,KSM),DUMPt(LCM,KSM),DUMPdye(LCM,KSM),
+     7  DUMPsedt(LCM,KSM),DUMPsndt(LCM,KSM),DUMPTOX(LCM,KSM,NTXM),
+     8  DUMPtoxp(LCM,KSM,NTXM),DUMPsebt(LCM),DUMPsnbt(LCM),
+     9  DUMPvolb(LCM),DUMPtbx(LCM,NTXM),DUMPtbxp(LCM,NTXM),
+     1  DUMPtbxx(LCM),DUMPtbyy(LCM),DUMPfx(LCM,KSM),DUMPfy(LCM,KSM)
+          COMMON/DUMP2b/
+     1  ESAVE(MLTMSRM),UZSAVE(MLTMSRM,KSM),VZSAVE(MLTMSRM,KSM),
+     1  WZSAVE(MLTMSRM,KSM),SZSAVE(MLTMSRM,KSM),TZSAVE(MLTMSRM,KSM),
+     2  DYESAVE(MLTMSRM,KSM),SEDTSAVE(MLTMSRM,KSM),
+     3  SNDTSAVE(MLTMSRM,KSM),TOXSAVE(MLTMSRM,KSM,NTXM),
+     4  TOXpSAVE(MLTMSRM,KSM,NTXM),SEBTSAVE(MLTMSRM),SnBTSAVE(MLTMSRM),
+     5  volbSAVE(MLTMSRM),tbxSAVE(MLTMSRM,NTXM),tbxpSAVE(MLTMSRM,NTXM),
+     6  tbxxSAVE(MLTMSRM),tbyySAVE(MLTMSRM)
+     6  ,FXSAVE(MLTMSRM,KSM),FYSAVE(MLTMSRM,KSM),
+     6  L2I(LCM),L2J(LCM),tauSAVE(MLTMSRM),DUMPtau(LCM)  ! 12/10/00
+      COMMON/GrADS/ IGrADS,Alati,
+     1 IDUMPe,IDUMPu,IDUMPv,IDUMPw,IDUMPs
+     1,IDUMPt,IDUMPd,IDUMPc,IDUMPn,IDUMPx
+     1,IDUMPb,IDUMPfx,IDUMPfy,ITIMES,tmiddle
+      COMMON/Grid1/ griddx(LCM),griddy(LCM),gridel(LCM),
+     1 gridH(LCM),gridang(LCM),gridlat(LCM),
+     2 gridx(LCM),gridy(LCM),gridijct(ICM,JCM)
+c      COMMON/WQTS3D/ IUDUM3,IUDUM4,
+c     1  WQTSA(NWQTSM,KSM,NWQVM),WQTSb(NWQTSM,KSM,NWQVM)
+   
+c----------------------------------------------
+c jeff ji, 9/10/99, for grid.inp and wqwin.inp
+C
+
+      common/psloadx/ psload(22)    ! @1, hardwired for OK, 11/17/99, smmbe,rwqpsl
+      common/Test01/xWSEDO(10),  xTAUD(10),  xWRSPO(10),  xTAUR(10)
+     * ,XSEDB(10)
+     * ,XLWSEDo(LCM),xLtaud(LCM),XLWRSPO(LCM),XLTAUR(LCM,KBM)
+     * ,fischer                                 ! for drag coefficient modification based on Fischer, C02Hyd.doc, 9/7/01
+       common /SWAN9/ ISWAN,dayswan1,dayswan2,Lswan,IWCM   !Ji@wave
+     *  ,dayswan,IHS(LCM),IDIR(LCM),ITM(LCM)
+     *  ,HS1(LCM),DIR1(LCM),TM1(LCM),HS2(LCM),DIR2(LCM),TM2(LCM)
+     *  , days1,days2,anglem(LCM),tau(LCM)
+     *  ,taurc(kbm),hbed00(LCM,KBM),sedb00(LCM,KBM,NSCM) ! for multi-layer bed, 10/21/00
+     *, ITMAP,itaumap(ICM,JCM),taur8(8,kbm),taud8(8)         ! for variable resuspension stress, 3/30/01
+
+      COMMON/gridinp/ IC9,JC9,LDM9
+     *  ,ISave, StartDay, EndDay,IWQWIN,IWQS
+C**********************************************************************C
+c
+c  runing long-term and PCB
+c     
+      CHARACTER*4 iyear
+      REAL tplus
+	  integer iyear1,inc_re
+      COMMON/longterm/iyear,tplus,iyear1,ilong,ifed_inc,IDWNDW(LCM,20),
+     *   inc_re,w_ts,ab_ts,h_car,IOP_SAVE,irecd,irunpcb,idiaout,irecdwq,
+     *   NPCB,RESBED,CSRITO,lcadia,ltimstep,iBSEDOP
+	  COMMON/pcbmodel/DIFTOXB(NTXM),SETBTOX1(NTXM),
+     * SETBTOX2(NTXM),SEDPOC(LCM,KBM),HBEDP(LCM,KBM),NTPCB,
+     * PORBEDP(LCM,KBM),SEDFP(LCM,0:KCM,NSCM),KBTP(LCM),TAU_MD(LCM),
+     * TAU_MD1(LCM),HENC(NTXM),RGASA(NTXM),IPCBpt(200),JPCBpt(200),
+     * NPCBpt,RESPOC,RPOC2IS,RESBS1,RESBS2,SETT_S1,SETT_S2,BPRO1,BPRO2,
+     * KBP,F_SET,F_Load,AirDiff,TOXA0,RCDAY,HTOP,HBOT,T_cr,A_BC,A_K,
+     * I_CENT,I_CTIME,I_UTIME,iMDTau,Tauexp ,Atmdep,ADEP,RESPCB,IPCON,
+     * ISVIN,PATH,PATH1,PATHpcb 
+       CHARACTER*60 PATH,PATH1,PATHpcb 
+C**********************************************************************C
+C 
+C Very timestep
+C       
+      common/cstep/CDAY(200),NTSPTCC(200),NSTDAY,NCSTEP,
+     *  NLAST,SaveTs,IWQDT1,NTSMMT0,ISDRYC(200),IWQC(21),
+     *  NCDAY(200),IS_SM(LCM),NT_WET,aver3d,NCPUs            ! Add NCPUs for OMP
+      common/doubpar/DAYLAST,SECDLAST
+       REAL*8 DAYLAST,SECDLAST  
+C
+      common/dyedty/ISUBMODE,NTRNVA,IRDYE,JRDYE,
+     &     KRDYE,IRELSOP,RELMASS,RELTIME,NSTEPREL    
+     &     TBS,TES,DPF,IVRDOP,n_re_iv
+C******************************************************
+C HSIMT transport
+      common/HSIMT/CKAX(LCM,KSM),CKAY(LCM,KSM),CKAW(LCM,KSM),
+     &    BETAX1(LCM,KSM),BETAX2(LCM,KSM), 
+     &    BETAY1(LCM,KSM),BETAY2(LCM,KSM),  
+     &    BETAZ1(LCM,KSM),BETAZ2(LCM,KSM),
+     &    LNNC(LCM),LSSC(LCM) 
+ 
