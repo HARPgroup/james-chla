@@ -28,9 +28,9 @@ c
 	flength=1 ! Ji, 9/17/99
 c
       if(inisd.eq.1) then
-       open(1,file='WQSD3D'//iyears//'.bin',form='binary') 
+       open(1,file='WQSD3D'//iyears//'.bin',form='unformatted') 
        CLOSE(1,STATUS='DELETE')
-       open(1,file='WQSD3D'//iyears//'.bin',form='binary') 
+       open(1,file='WQSD3D'//iyears//'.bin',form='unformatted') 
        CLOSE(1)
        inisd=0
       endif
@@ -49,7 +49,7 @@ c
           TIMTMP = timebf / float(nbfcnt)
           write(*,*)'Out flux time= ',TIMTMP,ITNWQ
           OPEN(UNIT=2, FILE='WQSD3D'//iyears//'.bin',ACCESS='append',
-     +       FORM='binary',STATUS='unknown')
+     +       form='unformatted',STATUS='unknown')
           OPEN(UNIT=3, FILE='WQSDTS.out',ACCESS='append',
      +        STATUS='unknown')
 c         INQUIRE(UNIT=2, FLEN=flength)

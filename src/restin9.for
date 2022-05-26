@@ -22,7 +22,7 @@ c     DIMENSION TDUMMY(KCM)
 C
 C**********************************************************************C
 C
-      OPEN(1,FILE='restart.inp',form='binary')
+      OPEN(1,FILE='restart.inp',form='unformatted')
 C
 C**********************************************************************C
 C

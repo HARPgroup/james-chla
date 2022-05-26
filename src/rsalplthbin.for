@@ -45,9 +45,9 @@ C
         TITLE='RESIDUAL HORIZONTAL SALINITY CONTOURS'
         LUN=531
         OPEN(LUN,FILE='rsalcnh'//iyear//'.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
         CLOSE(LUN,STATUS='DELETE')
-        OPEN(LUN,FILE='rsalcnh'//iyear//'.bin',form='binary')
+        OPEN(LUN,FILE='rsalcnh'//iyear//'.bin',form='unformatted')
         WRITE (LUN) LC-1,KC+2
       END IF
 C
@@ -55,9 +55,9 @@ C
         TITLE='RESIDUAL HORIZONTAL TEMPERATURE CONTOURS'
         LUN=532
         OPEN(LUN,FILE='rtemcnh'//iyear//'.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
         CLOSE(LUN,STATUS='DELETE')
-        OPEN(LUN,FILE='rtemcnh'//iyear//'.bin',form='binary')
+        OPEN(LUN,FILE='rtemcnh'//iyear//'.bin',form='unformatted')
         WRITE (LUN) LC-1,KC+2
       END IF
 C
@@ -65,9 +65,9 @@ C
         TITLE='RESIDUAL HORIZONTAL DYE CONC CONTOURS'
         LUN=533
         OPEN(LUN,FILE='rdyecnh'//iyear//'.bin',STATUS='UNKNOWN',
-     &  form='binary')
+     &  form='unformatted')
         CLOSE(LUN,STATUS='DELETE')
-        OPEN(LUN,FILE='rdyecnh'//iyear//'.bin',form='binary')
+        OPEN(LUN,FILE='rdyecnh'//iyear//'.bin',form='unformatted')
         WRITE (LUN) LC-1,KC+2
       END IF
 C
@@ -75,9 +75,9 @@ C
         TITLE='RESIDUAL HORIZ COHESIVE SEDIMENT CONC CONTOURS'
         LUN=536
         OPEN(LUN,FILE='rsedcnh'//iyear//'.bin',STATUS='UNKNOWN',
-     &  form='binary')
+     &  form='unformatted')
         CLOSE(LUN,STATUS='DELETE')
-        OPEN(LUN,FILE='rsedcnh'//iyear//'.bin',form='binary')
+        OPEN(LUN,FILE='rsedcnh'//iyear//'.bin',form='unformatted')
         WRITE (LUN) LC-1,KC+2
       END IF
 C
@@ -97,9 +97,9 @@ C
         TITLE='RESIDUAL HORIZ TOXIC CONTAM CONC CONTOURS'
         LUN=535
         OPEN(LUN,FILE='rtoxcnh'//iyear//'.bin',STATUS='UNKNOWN',
-     & form='binary')
+     & form='unformatted')
         CLOSE(LUN,STATUS='DELETE')
-        OPEN(LUN,FILE='rtoxcnh'//iyear//'.bin',form='binary')
+        OPEN(LUN,FILE='rtoxcnh'//iyear//'.bin',form='unformatted')
         WRITE (LUN) LC-1,KC+2,NTOX
 
  !       TITLE='RESIDUAL HORIZ TOXIC PART FRAC CONTOURS'
@@ -117,9 +117,9 @@ C
         TITLE='RESIDUAL HORIZONTAL SFL CONC CONTOURS'
         LUN=534
         OPEN(LUN,FILE='rsflcnh'//iyear//'.bin',STATUS='UNKNOWN',
-     &  form='binary')
+     &  form='unformatted')
         CLOSE(LUN,STATUS='DELETE')
-        OPEN(LUN,FILE='rsflcnh'//iyear//'.bin',form='binary')
+        OPEN(LUN,FILE='rsflcnh'//iyear//'.bin',form='unformatted')
         WRITE (LUN) LC-1,KC+2
       END IF
 C

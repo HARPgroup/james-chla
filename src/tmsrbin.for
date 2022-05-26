@@ -125,111 +125,111 @@ C
         IF (MTMSRC(MLTM).EQ.1) THEN
           IF(ISTRAN(1).GE.1) THEN
             FNSAL(MLTM)='salts'//iyear//'.bin'
-            OPEN(511,FILE=FNSAL(MLTM),STATUS='UNKNOWN',form='binary')
+            OPEN(511,FILE=FNSAL(MLTM),STATUS='UNKNOWN',form='unformatted')
             CLOSE(511,STATUS='DELETE')
-            OPEN(511,FILE=FNSAL(MLTM),STATUS='UNKNOWN',form='binary')
+            OPEN(511,FILE=FNSAL(MLTM),STATUS='UNKNOWN',form='unformatted')
             WRITE (511) KC+2
           END IF
           IF (ISTRAN(2).GE.1) THEN
             FNTEM(MLTM)='temts'//iyear//'.bin'
-            OPEN(512,FILE=FNTEM(MLTM),STATUS='UNKNOWN',form='binary')
+            OPEN(512,FILE=FNTEM(MLTM),STATUS='UNKNOWN',form='unformatted')
             CLOSE(512,STATUS='DELETE')
-            OPEN(512,FILE=FNTEM(MLTM),STATUS='UNKNOWN',form='binary')
+            OPEN(512,FILE=FNTEM(MLTM),STATUS='UNKNOWN',form='unformatted')
             WRITE (512) KC+2
           END IF
           IF (ISTRAN(3).GE.1) THEN
             FNDYE(MLTM)='dyets'//iyear//'.bin'
-            OPEN(513,FILE=FNDYE(MLTM),STATUS='UNKNOWN',form='binary')
+            OPEN(513,FILE=FNDYE(MLTM),STATUS='UNKNOWN',form='unformatted')
             CLOSE(513,STATUS='DELETE')
-            OPEN(513,FILE=FNDYE(MLTM),STATUS='UNKNOWN',form='binary')
+            OPEN(513,FILE=FNDYE(MLTM),STATUS='UNKNOWN',form='unformatted')
             WRITE (513) KC+2
            END IF
           IF (ISTRAN(4).GE.1) THEN
             FNSFL(MLTM)='sflts' //iyear//'.bin'
-            OPEN(514,FILE=FNSFL(MLTM),STATUS='UNKNOWN',form='binary')
+            OPEN(514,FILE=FNSFL(MLTM),STATUS='UNKNOWN',form='unformatted')
             CLOSE(514,STATUS='DELETE')
-            OPEN(514,FILE=FNSFL(MLTM),STATUS='UNKNOWN',form='binary')
+            OPEN(514,FILE=FNSFL(MLTM),STATUS='UNKNOWN',form='unformatted')
             WRITE (514) KC+2
           END IF
           IF (ISTRAN(6).GE.1) THEN
             FNSED(MLTM)='sedts'//iyear//'.bin'
-            OPEN(515,FILE=FNSED(MLTM),STATUS='UNKNOWN',form='binary')
+            OPEN(515,FILE=FNSED(MLTM),STATUS='UNKNOWN',form='unformatted')
             CLOSE(515,STATUS='DELETE')
-            OPEN(515,FILE=FNSED(MLTM),STATUS='UNKNOWN',form='binary')
+            OPEN(515,FILE=FNSED(MLTM),STATUS='UNKNOWN',form='unformatted')
             WRITE (515) KC+3
           END IF
           IF (ISTRAN(7).GE.1) THEN
             FNSND(MLTM)='sndts'//iyear//'.bin'
-            OPEN(516,FILE=FNSND(MLTM),STATUS='UNKNOWN',form='binary')
+            OPEN(516,FILE=FNSND(MLTM),STATUS='UNKNOWN',form='unformatted')
             CLOSE(516,STATUS='DELETE')
-            OPEN(516,FILE=FNSND(MLTM),STATUS='UNKNOWN',form='binary')
+            OPEN(516,FILE=FNSND(MLTM),STATUS='UNKNOWN',form='unformatted')
             WRITE (516)  KC+3
           END IF
           IF (ISTRAN(5).GE.1) THEN
             FNTOX(MLTM,1)='tox'//iyear//'.bin'
-            OPEN(517,FILE=FNTOX(MLTM,1),STATUS='UNKNOWN',form='binary')
+            OPEN(517,FILE=FNTOX(MLTM,1),STATUS='UNKNOWN',form='unformatted')
             CLOSE(517,STATUS='DELETE')
-            OPEN(517,FILE=FNTOX(MLTM,1),STATUS='UNKNOWN',form='binary')
+            OPEN(517,FILE=FNTOX(MLTM,1),STATUS='UNKNOWN',form='unformatted')
             WRITE (517) NTOX,KC+4
           END IF
         END IF
         IF (MTMSRA(MLTM).EQ.1) THEN
           FNAVV(MLTM)='avvts'//iyear//'.bin'
-          OPEN(518,FILE=FNAVV(MLTM),STATUS='UNKNOWN',form='binary')
+          OPEN(518,FILE=FNAVV(MLTM),STATUS='UNKNOWN',form='unformatted')
           CLOSE(518,STATUS='DELETE')
-          OPEN(518,FILE=FNAVV(MLTM),STATUS='UNKNOWN',form='binary')
+          OPEN(518,FILE=FNAVV(MLTM),STATUS='UNKNOWN',form='unformatted')
           WRITE (518)KC+1
           FNAVB(MLTM)='avbts'//iyear//'.bin'
-          OPEN(519,FILE=FNAVB(MLTM),STATUS='UNKNOWN',form='binary')
+          OPEN(519,FILE=FNAVB(MLTM),STATUS='UNKNOWN',form='unformatted')
           CLOSE(519,STATUS='DELETE')
-          OPEN(519,FILE=FNAVB(MLTM),STATUS='UNKNOWN',form='binary')
+          OPEN(519,FILE=FNAVB(MLTM),STATUS='UNKNOWN',form='unformatted')
           WRITE (519) KC+1
         END IF
         IF (MTMSRP(MLTM).EQ.1) THEN
           FNSEL(MLTM)='selts'//iyear//'.bin'
-          OPEN(520,FILE=FNSEL(MLTM),STATUS='UNKNOWN',form='binary')
+          OPEN(520,FILE=FNSEL(MLTM),STATUS='UNKNOWN',form='unformatted')
           CLOSE(520,STATUS='DELETE')
-          OPEN(520,FILE=FNSEL(MLTM),STATUS='UNKNOWN',form='binary')
+          OPEN(520,FILE=FNSEL(MLTM),STATUS='UNKNOWN',form='unformatted')
           WRITE (520) 5
         END IF
         IF (MTMSRUE(MLTM).EQ.1) THEN
           FNUVE(MLTM)='uvets' //iyear//'.bin'
-          OPEN(521,FILE=FNUVE(MLTM),STATUS='UNKNOWN',form='binary')
+          OPEN(521,FILE=FNUVE(MLTM),STATUS='UNKNOWN',form='unformatted')
           CLOSE(521,STATUS='DELETE')
-          OPEN(521,FILE=FNUVE(MLTM),STATUS='UNKNOWN',form='binary')
+          OPEN(521,FILE=FNUVE(MLTM),STATUS='UNKNOWN',form='unformatted')
           WRITE (521) 6
         END IF
         IF (MTMSRUT(MLTM).EQ.1) THEN
           FNUVT(MLTM)='uvtts' //iyear//'.bin'
-          OPEN(522,FILE=FNUVT(MLTM),STATUS='UNKNOWN',form='binary')
+          OPEN(522,FILE=FNUVT(MLTM),STATUS='UNKNOWN',form='unformatted')
           CLOSE(522,STATUS='DELETE')
-          OPEN(522,FILE=FNUVT(MLTM),STATUS='UNKNOWN',form='binary')
+          OPEN(522,FILE=FNUVT(MLTM),STATUS='UNKNOWN',form='unformatted')
           WRITE(522)3
         END IF
         IF (MTMSRU(MLTM).EQ.1) THEN
           FNU3D(MLTM)='u3dts' //iyear//'.bin'
-          OPEN(523,FILE=FNU3D(MLTM),STATUS='UNKNOWN',form='binary')
+          OPEN(523,FILE=FNU3D(MLTM),STATUS='UNKNOWN',form='unformatted')
           CLOSE(523,STATUS='DELETE')
-          OPEN(523,FILE=FNU3D(MLTM),STATUS='UNKNOWN',form='binary')
+          OPEN(523,FILE=FNU3D(MLTM),STATUS='UNKNOWN',form='unformatted')
           WRITE (523) KC+3
           FNV3D(MLTM)='v3dts'//iyear//'.bin'
-          OPEN(524,FILE=FNV3D(MLTM),STATUS='UNKNOWN',form='binary')
+          OPEN(524,FILE=FNV3D(MLTM),STATUS='UNKNOWN',form='unformatted')
           CLOSE(524,STATUS='DELETE')
-          OPEN(524,FILE=FNV3D(MLTM),STATUS='UNKNOWN',form='binary')
+          OPEN(524,FILE=FNV3D(MLTM),STATUS='UNKNOWN',form='unformatted')
           WRITE (524) KC+3
         END IF
         IF (MTMSRQE(MLTM).EQ.1) THEN
           FNQQE(MLTM)='qqets' //iyear//'.bin'
-          OPEN(525,FILE=FNQQE(MLTM),STATUS='UNKNOWN',form='binary')
+          OPEN(525,FILE=FNQQE(MLTM),STATUS='UNKNOWN',form='unformatted')
           CLOSE(525,STATUS='DELETE')
-          OPEN(525,FILE=FNQQE(MLTM),STATUS='UNKNOWN',form='binary')
+          OPEN(525,FILE=FNQQE(MLTM),STATUS='UNKNOWN',form='unformatted')
           WRITE (525) 7
         END IF
         IF (MTMSRQ(MLTM).EQ.1) THEN
           FNQ3D(MLTM)='q3dts' //iyear//'.bin'
-          OPEN(526,FILE=FNQ3D(MLTM),STATUS='UNKNOWN',form='binary')
+          OPEN(526,FILE=FNQ3D(MLTM),STATUS='UNKNOWN',form='unformatted')
           CLOSE(526,STATUS='DELETE')
-          OPEN(526,FILE=FNQ3D(MLTM),STATUS='UNKNOWN',form='binary')
+          OPEN(526,FILE=FNQ3D(MLTM),STATUS='UNKNOWN',form='unformatted')
           WRITE (526) KC+1
         END IF
       END DO

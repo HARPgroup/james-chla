@@ -15,12 +15,13 @@ LN = $(F95)
 ##  pgi compiler
 ## ifeq ($(XCOMP),ifort)
 ##  LFLAGS = -Bstatic
-  FPP_FLAGS = -Mpreprocess
+##  FPP_FLAGS = -Mpreprocess
 
+FFLAGS = -w
 ##  ifeq ($(XARCH),amd64b)
 ##      FFLAGS = -fastsse -O3 -tp piledriver  -m64  -mcmodel=medium
 ##  else
-      FFLAGS = -fastsse -O2 -Mipa=fast -tp amd64  -mcmodel=medium
+##      FFLAGS = -fastsse -O2 -Mipa=fast -tp amd64  -mcmodel=medium
 ##  endif
  
 ##  LIBS =

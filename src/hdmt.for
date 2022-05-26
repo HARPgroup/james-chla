@@ -104,61 +104,61 @@ C---------------------------------------------------------------------c
       IF(IRELSOP.EQ.2) THEN   ! Run dye
         
         OPEN(501,FILE='rdy1cnh.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
         CLOSE(501,STATUS='DELETE')
         OPEN(501,FILE='rdy1cnh.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
         WRITE (501) LC-1,KC+2
   
         OPEN(502,FILE='rdy2cnh.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
         CLOSE(502,STATUS='DELETE')
         OPEN(502,FILE='rdy2cnh.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
         WRITE (502) LC-1,KC+2
         
         OPEN(503,FILE='dyets1.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
          CLOSE(503,STATUS='DELETE')    
          OPEN(503,FILE='dyets1.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
           WRITE (503) KC+2
  
          OPEN(504,FILE='agets1.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
          CLOSE(504,STATUS='DELETE')    
          OPEN(504,FILE='agets1.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
          WRITE (504) KC+2
          
        IF(NTRNVA.GT.2) THEN     
 
         OPEN(601,FILE='rdy3cnh.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
         CLOSE(601,STATUS='DELETE')
         OPEN(601,FILE='rdy3cnh.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
         WRITE (601) LC-1,KC+2
   
         OPEN(602,FILE='rdy4cnh.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
         CLOSE(602,STATUS='DELETE')
         OPEN(602,FILE='rdy4cnh.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
         WRITE (602) LC-1,KC+2
         
         OPEN(603,FILE='dyets2.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
          CLOSE(603,STATUS='DELETE')    
          OPEN(603,FILE='dyets2.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
           WRITE (603) KC+2
  
          OPEN(604,FILE='agets2.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
          CLOSE(604,STATUS='DELETE')    
          OPEN(604,FILE='agets2.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
          WRITE (604) KC+2
          
          ENDIF 
@@ -166,10 +166,10 @@ C---------------------------------------------------------------------c
          ELSE        !IRELSOP=3
          
          OPEN(501,FILE='rdy1cnh.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
          CLOSE(501,STATUS='DELETE')
          OPEN(501,FILE='rdy1cnh.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
          WRITE (501) LC-1,KC+2       
          
          ENDIF
@@ -198,10 +198,10 @@ C----------------------------------------------------
          write(IDYEE,'(I2)')NW
          IDDD=700+NW
          OPEN(IDDD,FILE='residenc'//IDYEE//'.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
          CLOSE(IDDD,STATUS='DELETE')
          OPEN(IDDD,FILE='residenc'//IDYEE//'.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
          WRITE (IDDD) LC-1,KC+2       
         ENDDO    
              
@@ -307,10 +307,10 @@ C----------------------------------------------------
 
         write(*,*)'Computing residence time at selected location' 
          OPEN(500,FILE='residtime.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
          CLOSE(500,STATUS='DELETE')
          OPEN(500,FILE='residtime.bin',STATUS='UNKNOWN',
-     &   form='binary')            
+     &   form='unformatted')            
          WQ3DA=0
         
          IF(MLTMSR>20)MLTMSR=20
@@ -417,10 +417,10 @@ C===================================================================
        endif
          IDDD=500+NW
          OPEN(IDDD,FILE='Age'//IDYEE//'.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
          CLOSE(IDDD,STATUS='DELETE')
          OPEN(IDDD,FILE='Age'//IDYEE//'.bin',STATUS='UNKNOWN',
-     &   form='binary')
+     &   form='unformatted')
          WRITE (IDDD) LC-1,KC+2       
        ENDDO 
         WQ3DA=0
@@ -712,8 +712,8 @@ C
 	Ag_2=WQVO(L,KC,2)/0.04
 	Ag_3=WQVO(L,KC,3)/0.04
 	Ag_4=WQVO(L,1,22)/0.1
-	write(1,119)L,Ag_1,Ag_2,Ag_3,Ag_4,WQVO(L,ILY,IVV1),WQVO(L,ILY,IVV2)
-     $,TIME 
+	write(1,119)L,Ag_1,Ag_2,Ag_3,Ag_4,WQVO(L,ILY,IVV1),
+     &    WQVO(L,ILY,IVV2),TIME 
 	enddo
 1008  close(1)
 
@@ -1048,7 +1048,7 @@ C-------------------------------------------------------------------------------
      &      /(2500.0*(1-PORBEDP(L,KBP-1)))
           ENDIF
 !	write(1,11)L,DLON(L),DLAT(L),HP(L)+BELV(L),SAL(L,1),SAL(L,KC)
-	   write(1,111)L,DLON(L),DLAT(L),SEDPOC(L,2),TOX(L,1,1),TOX(L,KC,1),
+	 write(1,111)L,DLON(L),DLAT(L),SEDPOC(L,2),TOX(L,1,1),TOX(L,KC,1),
      &	 TOXF(L,0,1)*ACV,TOXF(L,0,2)*ACV,(SEDFP(L,0,1)+SEDFP(L,0,2))*ACV
          write(2,112)L,DLON(L),DLAT(L),T_TMP,T_TMP1,
      &   PORBEDP(L,2),PORBEDP(L,1),SEDFP(L,0,2)*ACV,SEDFP(L,0,2)*ACV

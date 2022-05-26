@@ -49,40 +49,40 @@ C
 
       INQUIRE(251,opened=op)
       IF(.not.op)OPEN(251,FILE=trim(path)//'HWQ'//tday//'.outb',
-     &       	STATUS='UNKNOWN', form='binary')
+     &       	STATUS='UNKNOWN', form='unformatted')
 
       INQUIRE(252,opened=op)
       IF(.not.op)OPEN(252,FILE=trim(path)//'UHDXYWQ'//tday//'.outb', 
-     &          	STATUS='UNKNOWN', form='binary')
+     &          	STATUS='UNKNOWN', form='unformatted')
       
 	  INQUIRE(253,opened=op)
       IF(.not.op)OPEN(253,FILE=trim(path)//'UVWQ'//tday//'.outb', 
-     &       STATUS='UNKNOWN', form='binary')
+     &       STATUS='UNKNOWN', form='unformatted')
 
 	  INQUIRE(254,opened=op)
       IF(.not.op)OPEN(254,FILE=trim(path)//'WWQ'//tday//'.outb', 
-     &    	STATUS='UNKNOWN', form='binary')
+     &    	STATUS='UNKNOWN', form='unformatted')
 
 	  INQUIRE(255,opened=op)
       IF(.not.op)OPEN(255,FILE=trim(path)//'AB'//tday//'.outb',
-     &       	STATUS='UNKNOWN', form='binary')
+     &       	STATUS='UNKNOWN', form='unformatted')
  
       if(ISTRAN(2).eq.1)then
 	  INQUIRE(256,opened=op)
       IF(.not.op)OPEN(256,FILE=trim(path1)//'TEM'//tday//'.outb' 
-     &      	,STATUS='UNKNOWN', form='binary')
+     &      	,STATUS='UNKNOWN', form='unformatted')
       endif
       
       if(ISTRAN(6).eq.1)then
 	  INQUIRE(257,opened=op)
       IF(.not.op)OPEN(257,FILE=trim(path1)//'SED'//tday//'.outb' 
-     &       	,STATUS='UNKNOWN', form='binary')
+     &       	,STATUS='UNKNOWN', form='unformatted')
       endif
       
       if(ISTRAN(1).eq.1)then
 	  INQUIRE(258,opened=op)
       IF(.not.op)OPEN(258,FILE=trim(path)//'SAL'//tday//'.outb', 
-     &      	STATUS='UNKNOWN', form='binary')
+     &      	STATUS='UNKNOWN', form='unformatted')
       endif
       
        if(nopen.eq.0)then

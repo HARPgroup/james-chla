@@ -28,22 +28,22 @@
       
       INQUIRE(261,opened=op)
       IF(.not.op)OPEN(261,FILE=trim(pathwq)//'WQAG'//tday//'.outb',
-     &        	STATUS='UNKNOWN', form='binary')
+     &        	STATUS='UNKNOWN', form='unformatted')
 
       INQUIRE(262,opened=op)
       IF(.not.op)OPEN(262,FILE=trim(pathwq)//'WQPOC'//tday//'.outb',
-     &        	STATUS='UNKNOWN', form='binary')
+     &        	STATUS='UNKNOWN', form='unformatted')
 
 c	INQUIRE(263,opened=op)     
 c      IF(.not.op)OPEN(263,FILE=trim(pathwq)//'WQSEDPOC'//tday//'.outb',
-c     &        	STATUS='UNKNOWN', form='binary')
+c     &        	STATUS='UNKNOWN', form='unformatted')
       INQUIRE(263,opened=op)
       IF(.not.op)OPEN(263,FILE=trim(pathwq)//'WQTP'//tday//'.outb',
-     &        	STATUS='UNKNOWN', form='binary')
+     &        	STATUS='UNKNOWN', form='unformatted')
      
       INQUIRE(264,opened=op)
       IF(.not.op)OPEN(264,FILE=trim(pathwq)//'WQTN'//tday//'.outb',
-     &        	STATUS='UNKNOWN', form='binary')
+     &        	STATUS='UNKNOWN', form='unformatted')
       
       ENDIF
      
@@ -234,7 +234,7 @@ C======================================================================
 
 !      if(IOP_SAVE.GT.0)then
 !      write(*,*)'Write WQ carbon !'
-!	 open(250,file='wqfield.bin',form='binary') 
+!	 open(250,file='wqfield.bin',form='unformatted') 
 !      write(250)LCMWQ,ICMWQ,JCMWQ,KCWM
 !      write(250)LIJW,ILW,JLW
 !      write(250)TBEGIN,DT,isWQDF_inc

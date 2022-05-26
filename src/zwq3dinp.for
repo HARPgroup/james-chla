@@ -175,24 +175,24 @@ c      ELSE
 C    
         OPEN(1,FILE='wqwcts.bin',STATUS='UNKNOWN')
         CLOSE(1,STATUS='DELETE')
-        OPEN(551,FILE='wqwcts.bin',STATUS='UNKNOWN',form='binary')   
+        OPEN(551,FILE='wqwcts.bin',STATUS='UNKNOWN',form='unformatted')   
 C 
        if(isWQMIN==1) then      
         OPEN(1,FILE='wqwtsmin.bin',STATUS='UNKNOWN')
         CLOSE(1,STATUS='DELETE')
-        OPEN(552,FILE='wqwtsmin.bin',STATUS='UNKNOWN',form='binary')   
+        OPEN(552,FILE='wqwtsmin.bin',STATUS='UNKNOWN',form='unformatted')   
       
         OPEN(1,FILE='wqwtsmax.bin',STATUS='UNKNOWN')
         CLOSE(1,STATUS='DELETE')
-        OPEN(553,FILE='wqwtsmax.bin',STATUS='UNKNOWN',form='binary')      
+        OPEN(553,FILE='wqwtsmax.bin',STATUS='UNKNOWN',form='unformatted')      
 
         OPEN(1,FILE='wqwtsavg.bin',STATUS='UNKNOWN')
         CLOSE(1,STATUS='DELETE')
-        OPEN(554,FILE='wqwtsavg.bin',STATUS='UNKNOWN',form='binary')              
+        OPEN(554,FILE='wqwtsavg.bin',STATUS='UNKNOWN',form='unformatted')              
       
         OPEN(1,FILE='Algaeavg.bin',STATUS='UNKNOWN')
         CLOSE(1,STATUS='DELETE')
-        OPEN(555,FILE='Algaeavg.bin',STATUS='UNKNOWN',form='binary')                     
+        OPEN(555,FILE='Algaeavg.bin',STATUS='UNKNOWN',form='unformatted')                     
         write(555)LCMWQ
         
        endif

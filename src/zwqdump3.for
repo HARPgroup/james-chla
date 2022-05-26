@@ -52,25 +52,25 @@
 
 	 if(isBIN.GE.1) then
   
-        open(1,file='wq3d'//iyear//'.bin',form='binary') 
+        open(1,file='wq3d'//iyear//'.bin',form='unformatted') 
         CLOSE(1,STATUS='DELETE')
-        open(1,file='wq3d'//iyear//'.bin',form='binary')
+        open(1,file='wq3d'//iyear//'.bin',form='unformatted')
 	  write(1)NWQVM,KCWM,LCMWQ,ICMWQ,JCMWQ
 	  write(1)LIJW,ILW,JLW
 	  close(1)
-	  open(1,file='wqsed3d'//iyear//'.bin',form='binary')	
+	  open(1,file='wqsed3d'//iyear//'.bin',form='unformatted')	
 	  CLOSE(1,STATUS='DELETE')
  	  
         IF(isWQMIN.GE.1) then
-         open(1,file='wq3dmax'//iyear//'.bin',form='binary') 
+         open(1,file='wq3dmax'//iyear//'.bin',form='unformatted') 
          CLOSE(1,STATUS='DELETE')
-         open(1,file='wq3dmax'//iyear//'.bin',form='binary')
+         open(1,file='wq3dmax'//iyear//'.bin',form='unformatted')
 	   write(1)NWQVM,KCWM,LCMWQ,ICMWQ,JCMWQ
 	   write(1)LIJW,ILW,JLW
 	   close(1)
-         open(1,file='wq3dmin'//iyear//'.bin',form='binary') 
+         open(1,file='wq3dmin'//iyear//'.bin',form='unformatted') 
          CLOSE(1,STATUS='DELETE')
-         open(1,file='wq3dmin'//iyear//'.bin',form='binary')
+         open(1,file='wq3dmin'//iyear//'.bin',form='unformatted')
 	   write(1)NWQVM,KCWM,LCMWQ,ICMWQ,JCMWQ
 	   write(1)LIJW,ILW,JLW
 	   close(1)  	 
@@ -366,7 +366,7 @@ C
  101  format(2I6,3F9.2,F12.5,F10.3,8F12.3) 
  
       OPEN(1,FILE='production'//iyear//'.out',
-     &  STATUS='UNKNOWN',ACCESS='APPEND')
+     &  STATUS='UNKNOWN')
        TIMTMP=(DT*FLOAT(N)+TCON*TBEGIN)/86400
        IF(NCSTEP.GT.0) TIMTMP=SECDLAST/TCON+TBEGIN 
       DO M=1,IWQTS                              
@@ -398,7 +398,7 @@ C
                  
       if(isBIN.GE.1) then    
                        
-	 open(1,file='wq3d'//iyear//'.bin',form='binary',ACCESS='APPEND')	
+	 open(1,file='wq3d'//iyear//'.bin',form='unformatted')	
         TIMTMP=(DT*FLOAT(N)+TCON*TBEGIN)/86400
         IF(NCSTEP.GT.0) TIMTMP=SECDLAST/TCON+TBEGIN 
         WRITE(1) TIMTMP,WQ3DA,WQTOT  
@@ -406,21 +406,21 @@ C
 !        
 ! Save sediment flux here
 
-	  open(1,file='wqsed3d'//iyear//'.bin',form='binary',ACCESS='APPEND')	
+	  open(1,file='wqsed3d'//iyear//'.bin',form='unformatted')	
         WRITE(1) TIMTMP,WQBFO2,WQBFNH4,WQBFNO3,WQBFPO4D  
  	  close(1)  
                            
        if(isWQMIN.GE.1) then
    
- 	  open(1,file='wq3dmax'//iyear//'.bin',form='binary',
-     &  ACCESS='APPEND')	
+ 	  open(1,file='wq3dmax'//iyear//'.bin',form='unformatted',
+     &  position='append')	
         TIMTMP=(DT*FLOAT(N)+TCON*TBEGIN)/86400
         IF(NCSTEP.GT.0) TIMTMP=SECDLAST/TCON+TBEGIN 
         WRITE(1) TIMTMP,WQVmax,WQTOTmax  
  	  close(1)
       
-        open(1,file='wq3dmin'//iyear//'.bin',form='binary',
-     &  ACCESS='APPEND')	
+        open(1,file='wq3dmin'//iyear//'.bin',form='unformatted',
+     &  position='append')	
         WRITE(1) TIMTMP,WQVmin,WQTOTmin  
 	  close(1)
 	  	  	  

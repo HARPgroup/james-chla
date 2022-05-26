@@ -14,8 +14,8 @@ C **  THE NUMBER OF TIME LEVELS IN THE STEP
 C
 C**********************************************************************C
 C
-      INCLUDE 'EFDC.PAR'
-      INCLUDE 'EFDC.CMN'
+      INCLUDE 'efdc.par'
+      INCLUDE 'efdc.cmn'
       DIMENSION CON(LCM,KCM), CON1(LCM,KCM)
       DIMENSION CONTMX(LCM,KCM),CONTMN(LCM,KCM)
 C     DIMENSION  CH(LCM,KCM), CMAX(LCM,KCM), CMIN(LCM,KCM),

@@ -13,8 +13,8 @@ C ------------------------------------------------------------------------
 c     write(6,*) "? dump2 ", idump2
       IUDUMP=281               ! hyts.bin
       IUDUM2=282               ! hy3d.bin
-      open(IUDUMP,file='hyts.bin',form='binary')       ! time series
-      open(IUDUM2,file='hy3d.bin',form='binary')       ! 4D arrays for GrADS
+      open(IUDUMP,file='hyts.bin',form='unformatted')       ! time series
+      open(IUDUM2,file='hy3d.bin',form='unformatted')       ! 4D arrays for GrADS
 C hyts.bin
       DO J=1,MLTMSR
       ESAVE(J)=0.0

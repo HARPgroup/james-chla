@@ -23,7 +23,7 @@
       write(*,*)'Write binary flow field files !',tday,TBEGIN,nofile
       
       if(nvar.eq.0) then
-	open(250,file='dynamicinf.bin',form='binary') 
+	open(250,file='dynamicinf.bin',form='unformatted') 
       write(250)LCM,KCM,KSM,NSCM,LA,KC,ICM,JCM
       write(250)LIJ,IL,JL
       write(250)TBEGIN,DT,ifed_inc
@@ -37,35 +37,35 @@
       
       INQUIRE(251,opened=op)
       IF(.not.op)OPEN(251,FILE='HWQ'//tday//'.outb',
-     &        	STATUS='UNKNOWN', form='binary')
+     &        	STATUS='UNKNOWN', form='unformatted')
 
       INQUIRE(252,opened=op)
       IF(.not.op)OPEN(252,FILE='UHDXYWQ'//tday//'.outb', 
-     &           	STATUS='UNKNOWN', form='binary')
+     &           	STATUS='UNKNOWN', form='unformatted')
       
 	  INQUIRE(253,opened=op)
       IF(.not.op)OPEN(253,FILE='UVWQ'//tday//'.outb', 
-     &         	STATUS='UNKNOWN', form='binary')
+     &         	STATUS='UNKNOWN', form='unformatted')
 
 	  INQUIRE(254,opened=op)
       IF(.not.op)OPEN(254,FILE='WWQ'//tday//'.outb', 
-     &    	STATUS='UNKNOWN', form='binary')
+     &    	STATUS='UNKNOWN', form='unformatted')
 
 	  INQUIRE(255,opened=op)
       IF(.not.op)OPEN(255,FILE='AB'//tday//'.outb',
-     &   	STATUS='UNKNOWN', form='binary')
+     &   	STATUS='UNKNOWN', form='unformatted')
 
 	  INQUIRE(256,opened=op)
       IF(.not.op)OPEN(256,FILE='TEM'//tday//'.outb', 
-     &     	STATUS='UNKNOWN', form='binary')
+     &     	STATUS='UNKNOWN', form='unformatted')
 
 	  INQUIRE(257,opened=op)
       IF(.not.op)OPEN(257,FILE='SED'//tday//'.outb', 
-     &    	STATUS='UNKNOWN', form='binary')
+     &    	STATUS='UNKNOWN', form='unformatted')
 
 	  INQUIRE(258,opened=op)
       IF(.not.op)OPEN(258,FILE='SAL'//tday//'.outb', 
-     &    	STATUS='UNKNOWN', form='binary')
+     &    	STATUS='UNKNOWN', form='unformatted')
 
 	  INQUIRE(259,opened=op)
       IF(.not.op)OPEN(259,FILE='infor.out',
@@ -125,7 +125,7 @@ C
       write(*,*)'Write binary flow field files !',tday
       
       if(nvar.eq.0) then
-	open(250,file='dynamicinf.bin',form='binary') 
+	open(250,file='dynamicinf.bin',form='unformatted') 
       write(250)LCM,KCM,KSM,NSCM,LA,KC,ICM,JCM
       write(250)LIJ,IL,JL
       write(250)TBEGIN,DT,ifed_inc
@@ -215,7 +215,7 @@ C
       write(tday,'(i4.4)')nofile
       write(*,*)'Write binary flow field files !',tday
       if(nvar.eq.0) then
-	open(250,file='dynamicinf.bin',form='binary') 
+	open(250,file='dynamicinf.bin',form='unformatted') 
       write(250)LCM,KCM,KSM,NSCM,LA,KC,ICM,JCM
       write(250)LIJ,IL,JL
       write(250)TBEGIN,DT,ifed_inc

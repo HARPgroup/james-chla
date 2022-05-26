@@ -19,9 +19,9 @@ C
 C**********************************************************************C
 C
 c     IF(IRSTYP.EQ.0) THEN
-        OPEN(99,FILE='restart.bin',STATUS='UNKNOWN',form='binary')
+        OPEN(99,FILE='restart.bin',STATUS='UNKNOWN',form='unformatted')
         CLOSE(99,STATUS='DELETE')
-        OPEN(99,FILE='restart.bin',STATUS='new',form='binary')
+        OPEN(99,FILE='restart.bin',STATUS='new',form='unformatted')
 c     END IF
 C
 C**********************************************************************C
