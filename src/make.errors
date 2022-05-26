@@ -1,0 +1,54 @@
+/usr/bin/ld: /tmp/ccgObvDi.o: in function `calmmt_':
+calmmt.for:(.text+0xb8d4): undefined reference to `rvelplth_'
+/usr/bin/ld: /tmp/cchgE6Me.o: in function `calpcb_':
+calpcb.for:(.text+0x352): undefined reference to `caltrpcb_'
+/usr/bin/ld: /tmp/ccccwIBe.o: in function `hdmt_':
+hdmt.for:(.text+0x2562): undefined reference to `wqmapping_'
+/usr/bin/ld: hdmt.for:(.text+0x256c): undefined reference to `zdye_inv_'
+/usr/bin/ld: hdmt.for:(.text+0x35e3): undefined reference to `wqmapping_'
+/usr/bin/ld: hdmt.for:(.text+0x35ed): undefined reference to `zdye_inv_'
+/usr/bin/ld: hdmt.for:(.text+0x47cf): undefined reference to `wqmapping_'
+/usr/bin/ld: hdmt.for:(.text+0x970b): undefined reference to `wqmapping_'
+/usr/bin/ld: hdmt.for:(.text+0x9769): undefined reference to `ssedtox_pcb_'
+/usr/bin/ld: hdmt.for:(.text+0x165ac): undefined reference to `calqq1a_'
+/usr/bin/ld: /tmp/ccH6CZvf.o: in function `input_':
+input.for:(.text+0xd3e6): undefined reference to `skipcomm_'
+/usr/bin/ld: input.for:(.text+0xe7c3): undefined reference to `skipcomm_'
+/usr/bin/ld: input.for:(.text+0xe964): undefined reference to `skipcomm_'
+/usr/bin/ld: input.for:(.text+0x1b7f8): undefined reference to `skipcomm_'
+/usr/bin/ld: input.for:(.text+0x1bb41): undefined reference to `skipcomm_'
+/usr/bin/ld: /tmp/ccH6CZvf.o:input.for:(.text+0x1bfe4): more undefined references to `skipcomm_' follow
+/usr/bin/ld: /tmp/cciMTSDg.o: in function `ltmt_':
+ltmt.for:(.text+0x39c0): undefined reference to `rvelplth_'
+/usr/bin/ld: /tmp/ccxewndg.o: in function `timelog_':
+timelog.for:(.text+0x1f): undefined reference to `time_'
+/usr/bin/ld: /tmp/ccpsWdqi.o: in function `zdye_':
+zdye.for:(.text+0x560): undefined reference to `caltrwqg_'
+/usr/bin/ld: /tmp/ccxXheme.o: in function `rwqsun_':
+zrwqsun.for:(.text+0xcf): undefined reference to `skipcomm_'
+/usr/bin/ld: /tmp/cc42jDMh.o: in function `wq3d_':
+zwq3d.for:(.text+0xe7): undefined reference to `wqmapping_'
+/usr/bin/ld: zwq3d.for:(.text+0x6c4): undefined reference to `wqmapping_'
+/usr/bin/ld: zwq3d.for:(.text+0xca3): undefined reference to `wwqtsbin_'
+/usr/bin/ld: zwq3d.for:(.text+0xe11): undefined reference to `wsmtsbin_'
+/usr/bin/ld: /tmp/ccKzkDph.o: in function `wq3dinp_':
+zwq3dinp.for:(.text+0x6a9): undefined reference to `wqmapping_'
+/usr/bin/ld: zwq3dinp.for:(.text+0x75a): undefined reference to `rwqinps_'
+/usr/bin/ld: zwq3dinp.for:(.text+0x1385): undefined reference to `smrin1_'
+/usr/bin/ld: /tmp/ccCx0yXg.o: in function `rwqinp_':
+zwqinput.for:(.text+0x1cf): undefined reference to `skipcomm_'
+/usr/bin/ld: zwqinput.for:(.text+0x36a): undefined reference to `skipcomm_'
+/usr/bin/ld: zwqinput.for:(.text+0xd32): undefined reference to `skipcomm_'
+/usr/bin/ld: zwqinput.for:(.text+0xf37): undefined reference to `skipcomm_'
+/usr/bin/ld: zwqinput.for:(.text+0x10d9): undefined reference to `skipcomm_'
+/usr/bin/ld: /tmp/ccCx0yXg.o:zwqinput.for:(.text+0x20c3): more undefined references to `skipcomm_' follow
+/usr/bin/ld: /tmp/ccCx0yXg.o: in function `rwqinp_':
+zwqinput.for:(.text+0x2fe6): undefined reference to `initbin3_'
+/usr/bin/ld: zwqinput.for:(.text+0x345b): undefined reference to `skipcomm_'
+/usr/bin/ld: zwqinput.for:(.text+0x3cc0): undefined reference to `skipcomm_'
+/usr/bin/ld: zwqinput.for:(.text+0x42b6): undefined reference to `skipcomm_'
+/usr/bin/ld: zwqinput.for:(.text+0x4e12): undefined reference to `skipcomm_'
+/usr/bin/ld: zwqinput.for:(.text+0x5203): undefined reference to `skipcomm_'
+/usr/bin/ld: /tmp/ccCx0yXg.o:zwqinput.for:(.text+0x54fc): more undefined references to `skipcomm_' follow
+collect2: error: ld returned 1 exit status
+make: *** [Makefile:54: jameswq] Error 1

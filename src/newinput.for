@@ -260,7 +260,10 @@ c        OPEN(1,FILE='wndmap.inp',STATUS='UNKNOWN')
           READ(1,1)
         END DO
         DO L=2,LA
-        READ(1,*)LD,ID,JD,IDT,((IDWNDW(LD,NS),WNDWHT(LD,NS)),NS=1,NWSER)
+          READ(1,*)LD,ID,JD,IDT
+          DO NS=1,NWSER
+            READ(1,*)IDWNDW(LD,NS),WNDWHT(LD,NS)     ! Read weight for 10 nearby station
+          END DO
         END DO
         CLOSE(1)
 	 ENDIF

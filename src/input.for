@@ -4113,7 +4113,10 @@ C
           READ(1,1)
         END DO
         DO L=2,LA
-          READ(1,*)LD,ID,JD,IDt,((IDWNDW(LD,N),WNDWHT(LD,N)),N=1,10)     ! Read weight for 10 nearby station
+          READ(1,*)LD,ID,JD,IDt
+          DO N=1,10
+            READ(1,*)IDWNDW(LD,N),WNDWHT(LD,N)     ! Read weight for 10 nearby station
+          END DO
         END DO
         CLOSE(1)
 	 ENDIF

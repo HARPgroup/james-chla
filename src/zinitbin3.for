@@ -174,7 +174,7 @@ c
         INQUIRE(FILE='WQDOCOMP.bin', EXIST=fexist)
         if (fexist) then
           OPEN(UNIT=io, FILE='WQDOCOMP.bin', ACCESS='append',
-     +      FORM='binary', STATUS='unknown')
+     +      FORM='unformatted', STATUS='unknown')
           CLOSE(UNIT=io, STATUS='DELETE')
           
           write(0,*) 'Old file WQDOCOMP.BIN/out deleted...'
@@ -182,7 +182,7 @@ c
         io=82
         open(UNIT=io, FILE='WQDOCOMP.bin', ACCESS='append',
 c         open(UNIT=io, FILE='WQDOCOMP.bin',
-     +     FORM='binary', STATUS='unknown')
+     +     FORM='unformatted', STATUS='unknown')
 c--------------------------------------------------------------------
 c write control parameters for post-processor to header
 c section of the WQDOCOMP.bin binary file:

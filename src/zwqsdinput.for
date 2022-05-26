@@ -43,7 +43,7 @@ C
       ELSE
       OPEN(1,FILE='wqsdts1.bin',STATUS='UNKNOWN') 
       CLOSE(1,STATUS='DELETE')   
-      OPEN(550,FILE='wqsdts1.bin',acccess='stream')
+      OPEN(550,FILE='wqsdts1.bin',form='unformatted')
       ENDIF
 c
       SMCW2=2.739726E-5

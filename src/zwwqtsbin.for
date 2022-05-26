@@ -44,7 +44,7 @@ c
       TIMTMP=(DT*FLOAT(N)+TCON*TBEGIN)/86400
       IF(NCSTEP.GT.0) TIMTMP=SECDLAST/TCON+TBEGIN 
           OPEN(UNIT=82, FILE='WQDOCOMP.bin',ACCESS='append',
-     +       FORM='binary',STATUS='unknown')
+     +       FORM='unformatted',STATUS='unknown')
           write(82)TIMTMP
           DO LL=2,LA
             DO K=1,KC

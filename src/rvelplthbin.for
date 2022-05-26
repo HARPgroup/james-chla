@@ -41,16 +41,16 @@ C
       DBS(2)=99.
 C
       OPEN(541,FILE='rvelvch'//iyear//'.bin',STATUS='UNKNOWN',
-     &  form='binary')
+     &  form='unformatted')
 
 !      OPEN(542,FILE='pvelvch'//iyear//'.bin',STATUS='UNKNOWN')
 !      OPEN(543,FILE='mvelvch'//iyear//'.bin',STATUS='UNKNOWN')
       CLOSE(541,STATUS='DELETE')
 !      CLOSE(542,STATUS='DELETE')
 !      CLOSE(543,STATUS='DELETE')
-      OPEN(541,FILE='rvelvch'//iyear//'.bin',form='binary')
-!      OPEN(542,FILE='pvelvch'//iyear//'.bin',form='binary')
-!      OPEN(543,FILE='mvelvch'//iyear//'.bin',form='binary')
+      OPEN(541,FILE='rvelvch'//iyear//'.bin',form='unformatted')
+!      OPEN(542,FILE='pvelvch'//iyear//'.bin',form='unformatted')
+!      OPEN(543,FILE='mvelvch'//iyear//'.bin',form='unformatted')
       write(541)LA-1,KC
 C
       JSRVPH=0

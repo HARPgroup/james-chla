@@ -108,17 +108,20 @@ C
         
         open(2,file='pcbcon1.bin',STATUS='UNKNOWN')
         CLOSE(2,STATUS='DELETE')
-        open(801,file='pcbcon1.bin',STATUS='UNKNOWN',form='unformatted')    
+        open(801,file='pcbcon1.bin',STATUS='UNKNOWN',
+     &    form='unformatted')    
         write(801)LA-1
 
         open(2,file='pcbcon2.bin',STATUS='UNKNOWN')
         CLOSE(2,STATUS='DELETE')
-        open(802,file='pcbcon2.bin',STATUS='UNKNOWN',form='unformatted')     
+        open(802,file='pcbcon2.bin',STATUS='UNKNOWN',
+     &    form='unformatted')     
         write(802)LA-1
         
         open(2,file='pcbcon3.bin',STATUS='UNKNOWN')
         CLOSE(2,STATUS='DELETE')
-        open(803,file='pcbcon3.bin',STATUS='UNKNOWN',form='unformatted')      
+        open(803,file='pcbcon3.bin',STATUS='UNKNOWN',
+     &    form='unformatted')      
         write(803)LA-1
      
 !        open(2,file='pcbtcon.out',STATUS='UNKNOWN')
@@ -135,28 +138,32 @@ C
         
         open(2,file='PCB_water.bin',STATUS='UNKNOWN')
         CLOSE(2,STATUS='DELETE')
-        open(801,file='PCB_water.bin',STATUS='UNKNOWN',form='unformatted')  
+        open(801,file='PCB_water.bin',STATUS='UNKNOWN',
+     &    form='unformatted')  
  !       write(2,*)'I  J PCBb PCBs KWb  KWs GAs'
         write(801)LA-1
  !       close(801)
 
         open(2,file='PCB_sed.bin',STATUS='UNKNOWN')
         CLOSE(2,STATUS='DELETE')
-        open(802,file='PCB_sed.bin',STATUS='UNKNOWN',form='unformatted')  
+        open(802,file='PCB_sed.bin',STATUS='UNKNOWN',
+     &    form='unformatted')  
  !       write(802,*)'I  J PCBb PCBs KWb  KWs GAs'
         write(802)LA-1
  !       close(2)
         
         open(2,file='PCB_parm1.bin',STATUS='UNKNOWN')
         CLOSE(2,STATUS='DELETE')
-        open(803,file='PCB_parm.bin',STATUS='UNKNOWN',form='unformatted')  
+        open(803,file='PCB_parm.bin',STATUS='UNKNOWN',
+     &    form='unformatted')  
  !       write(2,*)'I  J PCBb PCBs KWb  KWs GAs'
         write(803)LA-1
  !       close(2)
      
         open(2,file='PCB_parm2.bin',STATUS='UNKNOWN')
         CLOSE(2,STATUS='DELETE')
-        open(804,file='PCB_parm2.bin',STATUS='UNKNOWN',form='unformatted')  
+        open(804,file='PCB_parm2.bin',STATUS='UNKNOWN',
+     &    form='unformatted')  
  !       write(2,*)'L, TOX TOXB, Kbw'
         write(804)LA-1
  !       close(2)
@@ -1220,7 +1227,8 @@ C
          umrm = UWQS(L)
          vmrm = VWQS(L)
          wind_t=max(sqrt(umrm*umrm+vmrm*vmrm),0.2)
-	   CALL doboundary(Os,Asss,TEM(L,KC),SAL(L,KC),WINDST(L),umrm,vmrm,
+	   CALL doboundary(Os,Asss,TEM(L,KC),SAL(L,KC),WINDST(L),
+     &       umrm,vmrm,
 	1   HP(L),DZC(KC),0,IWQKA)
 	   AirD=AirDiff*Asss/86400.0	   
 !	    if(L.EQ.100) write(*,*)AirDiff*86400.,Gastox,
